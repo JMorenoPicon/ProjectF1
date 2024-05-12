@@ -47,7 +47,8 @@ public class Conexion {
     		consulta.executeUpdate(Sentencia);
     		System.out.println("Done.");
     	}catch(SQLException e){
-    		//JOptionPane.showMessageDialog(null, e.getMessage());
+    		JOptionPane.showMessageDialog(null, "Dorsal en uso, por favor elija otro");
+    		JOptionPane.showMessageDialog(null, e.getMessage());
     		throw new SQLException("");
     	} 
     	CerrarConexion();

@@ -86,24 +86,28 @@ public class crearPilotoJF extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombrePiloto = txtNombre.getText();
-				Integer dorsal = Integer.parseInt(txtDorsal.getText());
+				String dorsal = txtDorsal.getText();
+				Integer dorsalNumero = null;
 				
-				lib.Piloto piloto = new Piloto(nombrePiloto, dorsal);
-				CrearPilotoController CrearPilotoController = new CrearPilotoController();
-				
-				boolean resultado = false;
 				try {
-					resultado = CrearPilotoController.checkRegistro(piloto);
-					JOptionPane.showMessageDialog(null, "Piloto creado");
-					new pantallaInicioJF().setVisible(true);
-					crearPilotoJF.this.dispose();
-				}catch(SQLException ex) {
-					JOptionPane.showMessageDialog(null, "Fallo en la creación del piloto", "Advertencia", JOptionPane.WARNING_MESSAGE);
+					dorsalNumero = Integer.parseInt(dorsal);
+					lib.Piloto piloto = new Piloto(nombrePiloto, dorsalNumero);
+					CrearPilotoController CrearPilotoController = new CrearPilotoController();
 					
-					new crearPilotoJF().setVisible(true);//Asi abro una nueva ventana de crear piloto y elimino la anterior
-					crearPilotoJF.this.dispose();
+					try {
+						boolean resultado = CrearPilotoController.checkRegistro(piloto);
+						JOptionPane.showMessageDialog(null, "Piloto creado");
+						new pantallaInicioJF().setVisible(true);
+						crearPilotoJF.this.dispose();
+					}catch(SQLException ex) {
+						JOptionPane.showMessageDialog(null, "Fallo en la creación del piloto", "Advertencia", JOptionPane.WARNING_MESSAGE);
+						
+						new crearPilotoJF().setVisible(true);//Asi abro una nueva ventana de crear piloto y elimino la anterior
+						crearPilotoJF.this.dispose();
+					}
+				}catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "Por favor, introduzca un dorsal válido", "Advertencia", JOptionPane.WARNING_MESSAGE);
 				}
-				
 			}
 		});
 		btnNewButton.setBounds(394, 50, 89, 23);
