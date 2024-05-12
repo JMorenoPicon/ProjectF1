@@ -41,17 +41,19 @@ public class Conexion {
         return resultado;
     }
       
-    public static void EjecutarUpdate(String Sentencia) throws SQLException{
+    public static boolean EjecutarUpdate(String Sentencia){
     	Conectar();
     	try{
     		consulta.executeUpdate(Sentencia);
     		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
     	}catch(SQLException e){
     		JOptionPane.showMessageDialog(null, "Dorsal en uso, por favor elija otro");
     		JOptionPane.showMessageDialog(null, e.getMessage());
-    		throw new SQLException("");
-    	} 
-    	CerrarConexion();
+    		CerrarConexion();
+    		return false;
+    	}
     }
     
     public static void CerrarConexion(){

@@ -89,25 +89,25 @@ public class crearPilotoJF extends JFrame {
 				String dorsal = txtDorsal.getText();
 				Integer dorsalNumero = null;
 				
-				try {
+				CrearPilotoController CrearPiloto = new CrearPilotoController();
+				boolean res = CrearPiloto.checkDorsal(dorsal);
+				if(res == true) {
 					dorsalNumero = Integer.parseInt(dorsal);
 					lib.Piloto piloto = new Piloto(nombrePiloto, dorsalNumero);
-					EditorPilotosController CrearPiloto = new EditorPilotosController();
-					
-					try {
-						boolean resultado = CrearPiloto.checkRegistro(piloto);
+					if(CrearPiloto.checkRegistro(piloto)) {
 						JOptionPane.showMessageDialog(null, "Piloto creado");
-						new pantallaInicioJF().setVisible(true);
-						crearPilotoJF.this.dispose();
-					}catch(SQLException ex) {
-						JOptionPane.showMessageDialog(null, "Fallo en la creación del piloto", "Advertencia", JOptionPane.WARNING_MESSAGE);
-						
-						new crearPilotoJF().setVisible(true);//Asi abro una nueva ventana de crear piloto y elimino la anterior
-						crearPilotoJF.this.dispose();
 					}
-				}catch(Exception ex) {
-					JOptionPane.showMessageDialog(null, "Por favor, introduzca un dorsal válido", "Advertencia", JOptionPane.WARNING_MESSAGE);
 				}
+				
+				
+//				try {
+//					dorsalNumero = Integer.parseInt(dorsal);
+					
+					
+					
+//				}catch(Exception ex) {
+//					JOptionPane.showMessageDialog(null, "Por favor, introduzca un dorsal válido", "Advertencia", JOptionPane.WARNING_MESSAGE);
+//				}
 			}
 		});
 		btnNewButton.setBounds(394, 50, 89, 23);
