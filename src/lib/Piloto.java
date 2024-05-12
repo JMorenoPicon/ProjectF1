@@ -17,6 +17,10 @@ public class Piloto {
     	this.nombre = nombre;
     	this.dorsal = dorsal;
     }
+    
+    public Piloto(String nombre) {
+    	this.nombre = nombre;
+    }
 
     public String getNombre() {
         return nombre;

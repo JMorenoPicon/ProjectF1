@@ -1,6 +1,7 @@
 package Views;
 
 import java.awt.EventQueue;
+
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -11,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -18,6 +20,13 @@ import java.awt.Choice;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
+import Controller.BorrarPilotoController;
+import Controller.VerPilotosController;
+import lib.Piloto;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class borrarPilotoJF extends JFrame {
 
@@ -72,7 +81,14 @@ public class borrarPilotoJF extends JFrame {
 		});
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}));
+		
+		VerPilotosController verPilotos = new VerPilotosController();
+		ArrayList<String> arrayPilotosLista = verPilotos.verNombrePilotos();
+		if(arrayPilotosLista.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "No hay pilotos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+		}else {
+			comboBox.setModel(new DefaultComboBoxModel(arrayPilotosLista.toArray()));
+		}
 		comboBox.setBounds(87, 44, 129, 22);
 		contentPane.add(comboBox);
 		
@@ -84,6 +100,11 @@ public class borrarPilotoJF extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String item;
 				item = comboBox.getSelectedItem().toString();
+				Piloto piloto = new Piloto(item);
+				new BorrarPilotoController().checkDelete(piloto);
+				
+				new pantallaInicioJF().setVisible(true);
+				borrarPilotoJF.this.dispose();
 			}
 		});
 		btnNewButton.setBounds(222, 44, 100, 23);

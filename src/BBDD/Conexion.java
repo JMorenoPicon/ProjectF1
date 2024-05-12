@@ -33,6 +33,7 @@ public class Conexion {
     }
     
     public static ResultSet EjecutarSentencia(String Sentencia){
+    	Conectar();
         try {
         	resultado = consulta.executeQuery(Sentencia);
         }catch(Exception e){
@@ -41,7 +42,7 @@ public class Conexion {
         return resultado;
     }
       
-    public static boolean EjecutarUpdate(String Sentencia){
+    public static boolean EjecutarInsertPiloto(String Sentencia){
     	Conectar();
     	try{
     		consulta.executeUpdate(Sentencia);
@@ -50,6 +51,20 @@ public class Conexion {
     		return true;
     	}catch(SQLException e){
     		JOptionPane.showMessageDialog(null, "Dorsal en uso, por favor elija otro");
+    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarDeletePiloto(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
     		JOptionPane.showMessageDialog(null, e.getMessage());
     		CerrarConexion();
     		return false;
