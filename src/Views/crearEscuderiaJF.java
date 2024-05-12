@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class crearEscuderia extends JFrame {
+public class crearEscuderiaJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -41,7 +41,7 @@ public class crearEscuderia extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public crearEscuderia() {
+	public crearEscuderiaJF() {
 		setTitle("Editor de escuderías");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(crearPilotoJF.class.getResource("/Views/Images/logoF1.jpg")));
 		setResizable(false);
@@ -57,7 +57,7 @@ public class crearEscuderia extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);
-				crearEscuderia.this.dispose();
+				crearEscuderiaJF.this.dispose();
 			}
 		});
 		btnCancelar.setBounds(446, 58, 104, 23);

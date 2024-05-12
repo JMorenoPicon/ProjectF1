@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class verEscuderias extends JFrame {
+public class verEscuderiasJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class verEscuderias extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public verEscuderias() {
+	public verEscuderiasJF() {
 		setTitle("Escuderias");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(crearPilotoJF.class.getResource("/Views/Images/logoF1.jpg")));
 		setResizable(false);
@@ -53,7 +53,7 @@ public class verEscuderias extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);
-				verEscuderias.this.dispose();
+				verEscuderiasJF.this.dispose();
 			}
 		});
 		btnNewButton.setBounds(285, 371, 89, 23);

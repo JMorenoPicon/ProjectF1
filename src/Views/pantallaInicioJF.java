@@ -99,7 +99,7 @@ public class pantallaInicioJF extends JFrame {
 		JMenuItem CrearEscuderia = new JMenuItem("Crear escudería");
 		CrearEscuderia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new crearEscuderia().setVisible(true);
+				new crearEscuderiaJF().setVisible(true);
 				pantallaInicioJF.this.dispose();
 			}
 		});
@@ -126,7 +126,7 @@ public class pantallaInicioJF extends JFrame {
 		JMenuItem VerEscuderias = new JMenuItem("Ver escuderías");
 		VerEscuderias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new verEscuderias().setVisible(true);
+				new verEscuderiasJF().setVisible(true);
 				pantallaInicioJF.this.dispose();
 			}
 		});
@@ -165,7 +165,7 @@ public class pantallaInicioJF extends JFrame {
 		JMenuItem VerCircuitos = new JMenuItem("Ver circuitos");
 		VerCircuitos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new verCircuitosJf().setVisible(true); //crear vista verCircuitosJF
+				new verCircuitosJF().setVisible(true); //crear vista verCircuitosJF
 				pantallaInicioJF.this.dispose();
 			}
 		});

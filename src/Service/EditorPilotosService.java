@@ -5,7 +5,7 @@ import java.sql.*;
 
 import javax.swing.JOptionPane;
 
-public class CrearPilotoService {
+public class EditorPilotosService {
 	
 	public boolean checkRegistro(Piloto piloto) throws SQLException{
 		if(piloto.getNombre().isBlank()) {

@@ -92,10 +92,10 @@ public class crearPilotoJF extends JFrame {
 				try {
 					dorsalNumero = Integer.parseInt(dorsal);
 					lib.Piloto piloto = new Piloto(nombrePiloto, dorsalNumero);
-					CrearPilotoController CrearPilotoController = new CrearPilotoController();
+					EditorPilotosController CrearPiloto = new EditorPilotosController();
 					
 					try {
-						boolean resultado = CrearPilotoController.checkRegistro(piloto);
+						boolean resultado = CrearPiloto.checkRegistro(piloto);
 						JOptionPane.showMessageDialog(null, "Piloto creado");
 						new pantallaInicioJF().setVisible(true);
 						crearPilotoJF.this.dispose();

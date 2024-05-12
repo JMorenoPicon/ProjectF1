@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class verCircuitosJf extends JFrame {
+public class verCircuitosJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -37,7 +37,7 @@ public class verCircuitosJf extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public verCircuitosJf() {
+	public verCircuitosJF() {
 		setTitle("Circuitos");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(crearPilotoJF.class.getResource("/Views/Images/logoF1.jpg")));
 		setResizable(false);
@@ -53,7 +53,7 @@ public class verCircuitosJf extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);
-				verCircuitosJf.this.dispose();
+				verCircuitosJF.this.dispose();
 			}
 		});
 		

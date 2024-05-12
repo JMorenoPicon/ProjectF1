@@ -16,6 +16,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.Choice;
 import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class borrarPilotoJF extends JFrame {
 
@@ -68,16 +70,24 @@ public class borrarPilotoJF extends JFrame {
 				borrarPilotoJF.this.dispose();
 			}
 		});
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"}));
+		comboBox.setBounds(87, 44, 129, 22);
+		contentPane.add(comboBox);
+		
 		btnNewButton_1.setBounds(332, 44, 100, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton = new JButton("Confirmar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String item;
+				item = comboBox.getSelectedItem().toString();
+			}
+		});
 		btnNewButton.setBounds(222, 44, 100, 23);
 		contentPane.add(btnNewButton);
-		
-		Choice choice = new Choice();
-		choice.setBounds(87, 47, 129, 20);
-		contentPane.add(choice);
 		
 		txtSeleccioneElPiloto = new JTextField();
 		txtSeleccioneElPiloto.setEditable(false);
