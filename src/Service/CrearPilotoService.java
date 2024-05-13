@@ -12,7 +12,7 @@ public class CrearPilotoService {
 		if(piloto.getNombre().isBlank()) {
 			JOptionPane.showMessageDialog(null, "Registro fallido. Rellene el campo Nombre", "Advertencia", JOptionPane.WARNING_MESSAGE);
 		}else{
-			String sql = "INSERT INTO piloto (nombrePiloto, dorsal) VALUES ('" +piloto.getNombre() +"', '" +piloto.getDorsal() +"')";
+			String sql = "INSERT INTO piloto (nombrePiloto, dorsal) VALUES ('" +piloto.getNombre() +"', '" +piloto.getDorsal() +"');";
 			return Conexion.EjecutarInsertPiloto(sql);
 		}
 		return false;

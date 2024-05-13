@@ -8,10 +8,10 @@ public class VerPilotosController {
 	
 	/*Codigo para ver los pilotos*/
 	
-	private VerPilotosNombreService verPilotosNombreService;
+	private VerPilotosService verPilotosNombreService;
 	
 	public VerPilotosController() {
-		verPilotosNombreService = new VerPilotosNombreService();
+		verPilotosNombreService = new VerPilotosService();
 	}
 	
 	public ArrayList<String> verNombrePilotos() {

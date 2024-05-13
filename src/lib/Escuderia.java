@@ -10,6 +10,10 @@ public class Escuderia {
 	        this.nombreMotor = nombreMotor;
 	        this.puntos = puntos;
 	    }
+	    
+	    public Escuderia(String nombreEscuderia) {
+	    	this.nombreEscuderia = nombreEscuderia;
+	    }
 
 	    public String getNombreEscuderia() {
 	        return nombreEscuderia;

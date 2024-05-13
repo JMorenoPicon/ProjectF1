@@ -71,6 +71,21 @@ public class Conexion {
     	}
     }
     
+    public static boolean EjecutarUpdatePiloto(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		JOptionPane.showMessageDialog(null, "Dorsal en uso, por favor elija otro");
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
     public static void CerrarConexion(){
         try{
         	consulta.close();
