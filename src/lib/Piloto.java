@@ -18,6 +18,13 @@ public class Piloto {
     	this.dorsal = dorsal;
     }
     
+    public Piloto(String nombre, Escuderia escuderia, Integer dorsal) {
+    	this.nombre = nombre;
+    	this.escuderia = escuderia;
+    	this.dorsal = dorsal;
+    	
+    }
+    
     public Piloto(String nombre) {
     	this.nombre = nombre;
     }

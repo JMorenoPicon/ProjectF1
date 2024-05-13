@@ -45,4 +45,23 @@ public class VerPilotosService {
 			return arrayVacia;
 		}
 	}
+	
+	public ArrayList<String> verAllPilotos(){
+		try {
+			String sql = ("SELECT * FROM piloto;");
+			ResultSet res = Conexion.EjecutarSentencia(sql);
+			ArrayList<String> arrayDatosPilotos = new ArrayList<String>();
+			while(res.next()) {
+				int dorsalInt = res.getInt("dorsal");
+				String dorsalString = Integer.toString(dorsalInt);
+				arrayDatosPilotos.add(res.getString("nombrePiloto") +"\t"+dorsalString +"\t"+res.getString("escuderia"));
+				arrayDatosPilotos.add("\n");
+			}
+			return arrayDatosPilotos;
+		}catch(SQLException e){
+			JOptionPane.showMessageDialog(null, e.getStackTrace());
+			ArrayList<String> arrayVacia = new ArrayList<String>();
+			return arrayVacia;
+		}
+	}
 }

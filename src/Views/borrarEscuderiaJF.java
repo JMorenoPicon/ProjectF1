@@ -1,20 +1,30 @@
 package Views;
 
 import java.awt.EventQueue;
+
 import java.awt.Image;
 import java.awt.Toolkit;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.BorrarEscuderiaController;
+import Controller.VerEscuderiasController;
+import lib.Escuderia;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Choice;
 import java.awt.Button;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class borrarEscuderiaJF extends JFrame {
 
@@ -60,20 +70,35 @@ public class borrarEscuderiaJF extends JFrame {
 				borrarEscuderiaJF.this.dispose();
 			}
 		});
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		
+		VerEscuderiasController verEscuderias = new VerEscuderiasController();
+		ArrayList<String> arrayEscuderiasLista = verEscuderias.verNombreEscuderias();
+		if(arrayEscuderiasLista.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "No hay escuderias", "Advertencia", JOptionPane.WARNING_MESSAGE);
+		}else {
+			comboBox.setModel(new DefaultComboBoxModel(arrayEscuderiasLista.toArray()));
+		}
+		comboBox.setBounds(62, 51, 298, 20);
+		contentPane.add(comboBox);
 		button_1.setBounds(464, 51, 92, 22);
 		contentPane.add(button_1);
 		
 		Button button = new Button("Confirmar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String item;
+				item = comboBox.getSelectedItem().toString();
+				Escuderia escuderia = new Escuderia(item);
+				new BorrarEscuderiaController().checkDelete(escuderia);
+				
+				new pantallaInicioJF().setVisible(true);
+				borrarEscuderiaJF.this.dispose();
 			}
 		});
 		button.setBounds(366, 51, 92, 22);
 		contentPane.add(button);
-		
-		Choice choice = new Choice();
-		choice.setBounds(62, 51, 298, 20);
-		contentPane.add(choice);
 		
 		txtSeleccioneLaEscudera = new JTextField();
 		txtSeleccioneLaEscudera.setHorizontalAlignment(SwingConstants.CENTER);

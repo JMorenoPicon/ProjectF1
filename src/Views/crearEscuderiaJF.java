@@ -8,7 +8,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.CrearEscuderiaController;
+import lib.Escuderia;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -64,6 +70,23 @@ public class crearEscuderiaJF extends JFrame {
 		contentPane.add(btnCancelar);
 		
 		JButton btnNewButton = new JButton("Confirmar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombreEscuderia = textField.getText();
+				String motor = txtMotor.getText();
+				
+				CrearEscuderiaController crearEscuderia = new CrearEscuderiaController();
+				Escuderia escuderia = new Escuderia(nombreEscuderia, motor);
+				if(crearEscuderia.checkRegistro(escuderia)) {
+					JOptionPane.showMessageDialog(null, "Escudería creada");
+					new pantallaInicioJF().setVisible(true);
+					crearEscuderiaJF.this.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "Error", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				}
+				
+				}
+		});
 		btnNewButton.setBounds(332, 58, 104, 23);
 		contentPane.add(btnNewButton);
 		

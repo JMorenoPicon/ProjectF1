@@ -93,7 +93,7 @@ public class crearPilotoJF extends JFrame {
 				boolean res = CrearPiloto.checkDorsal(dorsal);
 				if(res == true) {
 					dorsalNumero = Integer.parseInt(dorsal);
-					lib.Piloto piloto = new Piloto(nombrePiloto, dorsalNumero);
+					Piloto piloto = new Piloto(nombrePiloto, dorsalNumero);
 					if(CrearPiloto.checkRegistro(piloto)) {
 						JOptionPane.showMessageDialog(null, "Piloto creado");
 						

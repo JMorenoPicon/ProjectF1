@@ -8,11 +8,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.VerPilotosController;
+import lib.Piloto;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.AbstractListModel;
+import javax.swing.JTextPane;
 
 public class verPilotosJF extends JFrame {
 
@@ -57,12 +66,25 @@ public class verPilotosJF extends JFrame {
 				verPilotosJF.this.dispose();
 			}
 		});
-		btnNewButton.setBounds(281, 371, 89, 23);
-		contentPane.add(btnNewButton);
 		
-		JLabel lblNewLabel_1 = new JLabel("Pilotos");
-		lblNewLabel_1.setBounds(10, 11, 644, 178);
-		contentPane.add(lblNewLabel_1);
+		JButton btnNewButton_1 = new JButton("Ver Pilotos");
+		btnNewButton_1.setBounds(102, 371, 132, 23);
+		contentPane.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JTextPane txtpnPilotos = new JTextPane();
+				txtpnPilotos.setBackground(new Color(255, 255, 255));
+				txtpnPilotos.setEditable(false);
+				txtpnPilotos.setBounds(10, 11, 634, 349);
+				contentPane.add(txtpnPilotos);
+				VerPilotosController verPilotos = new VerPilotosController();
+				ArrayList<String> listaPilotos = verPilotos.verAllPilotos();
+				txtpnPilotos.setText(listaPilotos.toString());
+			}
+		});
+		
+		btnNewButton.setBounds(409, 371, 132, 23);
+		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 654, 405);

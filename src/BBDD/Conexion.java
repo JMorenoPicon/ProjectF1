@@ -1,5 +1,6 @@
 package BBDD;
 import java.sql.*;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -51,13 +52,42 @@ public class Conexion {
     		return true;
     	}catch(SQLException e){
     		JOptionPane.showMessageDialog(null, "Dorsal en uso, por favor elija otro");
-    		JOptionPane.showMessageDialog(null, e.getMessage());
+//    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarInsertEscuderia(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, "Escuderia ya existente, por favor elija otro nombre para tu escuderia");
+//    		JOptionPane.showMessageDialog(null, e.getMessage());
     		CerrarConexion();
     		return false;
     	}
     }
     
     public static boolean EjecutarDeletePiloto(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarDeleteEscuderia(String Sentencia){
     	Conectar();
     	try{
     		consulta.executeUpdate(Sentencia);
@@ -78,9 +108,12 @@ public class Conexion {
     		System.out.println("Done.");
     		CerrarConexion();
     		return true;
+    	}catch(SQLIntegrityConstraintViolationException e){
+    		JOptionPane.showMessageDialog(null, "Dorsal en uso, por favor elija otro");
+    		CerrarConexion();
+    		return false;
     	}catch(SQLException e){
     		JOptionPane.showMessageDialog(null, e.getMessage());
-    		JOptionPane.showMessageDialog(null, "Dorsal en uso, por favor elija otro");
     		CerrarConexion();
     		return false;
     	}

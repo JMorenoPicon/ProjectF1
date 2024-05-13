@@ -14,6 +14,10 @@ public class Escuderia {
 	    public Escuderia(String nombreEscuderia) {
 	    	this.nombreEscuderia = nombreEscuderia;
 	    }
+	    public Escuderia(String nombreEscuderia, String nombreMotor) {
+	    	this.nombreEscuderia = nombreEscuderia;
+	    	this.nombreMotor = nombreMotor;
+	    }
 
 	    public String getNombreEscuderia() {
 	        return nombreEscuderia;
