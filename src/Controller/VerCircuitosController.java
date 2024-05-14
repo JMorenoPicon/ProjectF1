@@ -19,4 +19,9 @@ public class VerCircuitosController {
 	public ArrayList<String> verAllCircuitos(){
 		return verCircuitosService.verAllCircuitos();
 	}
+
+	public int verVueltasCircuito(String nombreCircuito) {
+		
+		return verCircuitosService.verVueltasCircuito(nombreCircuito);
+	}
 }

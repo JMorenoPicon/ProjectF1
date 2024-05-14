@@ -22,6 +22,11 @@ public class Circuito {
     public Circuito(String nombre) {
         this.nombre = nombre;
     }
+    
+    public Circuito(String nombre, int vueltas) {
+        this.nombre = nombre;
+        this.numeroVueltas = vueltas;
+    }
 
     public String getNombre() {
         return nombre;

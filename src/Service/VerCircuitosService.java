@@ -42,4 +42,19 @@ public class VerCircuitosService {
 			return arrayVacia;
 		}
 	}
+
+	public int verVueltasCircuito(String nombreCircuito) {
+		try {
+			String sql = ("SELECT * FROM circuito WHERE nombreCircuito = '" +nombreCircuito +"';");
+			ResultSet res = Conexion.EjecutarSentencia(sql);
+			int vueltas = -1;
+			while(res.next()) {
+				vueltas = res.getInt("numeroVueltas");
+			}
+			return vueltas;
+		}catch(SQLException e){
+			JOptionPane.showMessageDialog(null, e.getStackTrace());
+			return -1;
+		}
+	}
 }

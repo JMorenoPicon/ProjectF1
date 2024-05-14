@@ -26,8 +26,6 @@ public class temporadaJF extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
 	private JTextField mensajeAviso;
 
 	/**
@@ -71,70 +69,10 @@ public class temporadaJF extends JFrame {
 		mensajeAviso.setEditable(false);
 		mensajeAviso.setBackground(new Color(255, 255, 255));
 		mensajeAviso.setHorizontalAlignment(SwingConstants.CENTER);
-		mensajeAviso.setText("Va a iniciar una nueva temporada de la Formula 1 con los siguientes datos.");
+		mensajeAviso.setText("Va a iniciar una nueva temporada de la Formula 1");
 		mensajeAviso.setBounds(10, 25, 634, 20);
 		mensajeAviso.setColumns(10);
 		contentPane.add(mensajeAviso);
-		
-		JList list = new JList();
-		list.setBackground(new Color(255, 255, 240));
-		list.setBorder(new CompoundBorder());
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Piloto 1", "Piloto 2", "Piloto3 ", "Piloto 1", "Piloto 2", "Piloto3 ", "Piloto 1", "Piloto 2", "Piloto3 ", "Piloto 1", "Piloto 2", "Piloto3 ", "Piloto 1", "Piloto 2", "Piloto3 "};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		list.setBounds(74, 110, 86, 232);
-		contentPane.add(list);
-		
-		textField_2 = new JTextField();
-		textField_2.setEditable(false);
-		textField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_2.setText("Pilotos");
-		textField_2.setBounds(74, 80, 86, 20);
-		textField_2.setColumns(10);
-		contentPane.add(textField_2);
-		
-		textField_1 = new JTextField();
-		textField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		textField_1.setEditable(false);
-		textField_1.setText("Escuderias");
-		textField_1.setBounds(279, 80, 86, 20);
-		textField_1.setColumns(10);
-		contentPane.add(textField_1);
-		
-		JList list_1 = new JList();
-		list_1.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1", "2", "5", "5", "45", "4", "2", "4", "24", "2"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		list_1.setToolTipText("");
-		list_1.setBackground(new Color(255, 255, 240));
-		list_1.setBounds(279, 111, 86, 231);
-		contentPane.add(list_1);
-		
-		JList list_2 = new JList();
-		list_2.setModel(new AbstractListModel() {
-			String[] values = new String[] {"1", "2", "1", "2", "32", "", "1", "431", "", "41"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		list_2.setBackground(new Color(255, 255, 240));
-		list_2.setBounds(475, 111, 86, 231);
-		contentPane.add(list_2);
 		
 		textField = new JTextField();
 		textField = new JTextField();
@@ -147,6 +85,7 @@ public class temporadaJF extends JFrame {
 		JButton BotonContinuar = new JButton("Continuar");
 		BotonContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		BotonContinuar.setBackground(SystemColor.activeCaption);

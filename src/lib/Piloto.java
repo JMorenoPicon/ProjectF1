@@ -22,7 +22,6 @@ public class Piloto {
     	this.nombre = nombre;
     	this.escuderia = escuderia;
     	this.dorsal = dorsal;
-    	
     }
     
     public Piloto(String nombre) {

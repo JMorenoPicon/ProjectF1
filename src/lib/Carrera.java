@@ -11,6 +11,11 @@ public class Carrera {
         this.circuito = circuito;
         this.escuderias = escuderias;
     }
+    
+    public Carrera(ArrayList<Piloto> pilotos, Circuito circuito) {
+        this.pilotos = pilotos;
+        this.circuito = circuito;
+    }
 
     public ArrayList<Piloto> getPilotos() {
 		return pilotos;
