@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 
 import Service.VerCircuitosService;
+import lib.Circuito;
 
 public class VerCircuitosController {
 	
@@ -16,7 +17,7 @@ public class VerCircuitosController {
 		return verCircuitosService.verNombreCircuitos();
 	}
 	
-	public ArrayList<String> verAllCircuitos(){
+	public ArrayList<Circuito> verAllCircuitos(){
 		return verCircuitosService.verAllCircuitos();
 	}
 

@@ -7,7 +7,10 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.VerPilotosController;
 import lib.Piloto;
@@ -27,6 +30,7 @@ public class verPilotosJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -72,14 +76,30 @@ public class verPilotosJF extends JFrame {
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JTextPane txtpnPilotos = new JTextPane();
-				txtpnPilotos.setBackground(new Color(255, 255, 255));
-				txtpnPilotos.setEditable(false);
-				txtpnPilotos.setBounds(10, 11, 634, 349);
-				contentPane.add(txtpnPilotos);
+
 				VerPilotosController verPilotos = new VerPilotosController();
-				ArrayList<String> listaPilotos = verPilotos.verAllPilotos();
-				txtpnPilotos.setText(listaPilotos.toString());
+				ArrayList<Piloto> listaPilotos = new ArrayList<Piloto>();
+				listaPilotos = verPilotos.verAllPilotos();
+				
+				table = new JTable();
+				table.setBounds(10, 11, 644, 349);
+				contentPane.add(table);
+				
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Dorsal");
+				modelo.addColumn("Escuderia");
+				
+				for(var piloto:listaPilotos)
+				{
+					Object[] fila = {piloto.getNombre(),  piloto.getDorsal(), piloto.getEscuderia().getNombreEscuderia()};
+					modelo.addRow(fila);
+				}
+				table.setModel(modelo);
+				
+				JScrollPane scrollPane = new JScrollPane(table);
+				scrollPane.setBounds(10, 11, 634, 349);
+				contentPane.add(scrollPane);
 			}
 		});
 		

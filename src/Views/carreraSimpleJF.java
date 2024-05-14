@@ -111,6 +111,7 @@ public class carreraSimpleJF extends JFrame {
 				}else {
 					textField_1 = new JTextField();
 					textField_1.setBounds(10, 78, 634, 37);
+					textField_1.setEditable(false);
 					contentPane.add(textField_1);
 					textField_1.setColumns(10);
 
@@ -141,10 +142,8 @@ public class carreraSimpleJF extends JFrame {
 					}
 					table.setModel(modelo);
 					
-					
 					JScrollPane scrollPane = new JScrollPane(table);
 					scrollPane.setBounds(10, 121, 634, 273);
-					scrollPane.setVisible(true);
 					contentPane.add(scrollPane);
 				}
 			}

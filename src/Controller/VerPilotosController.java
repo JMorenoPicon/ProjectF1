@@ -18,7 +18,7 @@ public class VerPilotosController {
 		return verPilotosNombreService.verNombrePilotos();
 	}
 	
-	public ArrayList<String> verAllPilotos(){
+	public ArrayList<Piloto> verAllPilotos(){
 		return verPilotosNombreService.verAllPilotos();
 	}
 }

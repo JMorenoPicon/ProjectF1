@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import BBDD.Conexion;
+import lib.Escuderia;
 
 public class VerEscuderiasService {
 	public ArrayList<String> verNombreEscuderias(){
@@ -25,19 +26,21 @@ public class VerEscuderiasService {
 		}
 	}
 	
-	public ArrayList<String> verAllEscuderias(){
+	public ArrayList<Escuderia> verAllEscuderias(){
 		try {
 			String sql = ("SELECT * FROM escuderia;");
 			ResultSet res = Conexion.EjecutarSentencia(sql);
-			ArrayList<String> arrayDatosEscuderias = new ArrayList<String>();
+			ArrayList<Escuderia> arrayDatosEscuderias = new ArrayList<Escuderia>();
 			while(res.next()) {
-				arrayDatosEscuderias.add(res.getString("nombreEscuderia") +"\t"+"Motor: "+res.getString("motor"));
-				arrayDatosEscuderias.add("\n");
+				String nombre = res.getString("nombreEscuderia");
+				String motor = res.getString("motor");
+				Escuderia escuderia = new Escuderia(nombre, motor);
+				arrayDatosEscuderias.add(escuderia);
 			}
 			return arrayDatosEscuderias;
 		}catch(SQLException e){
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
-			ArrayList<String> arrayVacia = new ArrayList<String>();
+			ArrayList<Escuderia> arrayVacia = new ArrayList<Escuderia>();
 			return arrayVacia;
 		}
 	}

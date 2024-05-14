@@ -8,11 +8,15 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.VerEscuderiasController;
 import Controller.VerPilotosController;
+import lib.Escuderia;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -24,6 +28,7 @@ public class verEscuderiasJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
 
 //	/**
 //	 * Launch the application.
@@ -67,14 +72,30 @@ public class verEscuderiasJF extends JFrame {
 		JButton btnNewButton_1 = new JButton("Ver Escuderias");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JTextPane txtpnEscuderias = new JTextPane();
-				txtpnEscuderias.setBackground(new Color(255, 255, 255));
-				txtpnEscuderias.setEditable(false);
-				txtpnEscuderias.setBounds(10, 11, 634, 349);
-				contentPane.add(txtpnEscuderias);
+				
 				VerEscuderiasController verEscuderias = new VerEscuderiasController();
-				ArrayList<String> listaPilotos = verEscuderias.verAllEscuderias();
-				txtpnEscuderias.setText(listaPilotos.toString());
+				ArrayList<Escuderia> listaEscuderias = new ArrayList<Escuderia>();
+				listaEscuderias = verEscuderias.verAllEscuderias();
+				
+				table = new JTable();
+				table.setBounds(10, 11, 644, 349);
+				contentPane.add(table);
+				
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Motor");
+				
+				for(var escuderia:listaEscuderias)
+				{
+					Object[] fila = {escuderia.getNombreEscuderia(),  escuderia.getNombreMotor()};
+					modelo.addRow(fila);
+				}
+				table.setModel(modelo);
+				
+				JScrollPane scrollPane = new JScrollPane(table);
+				scrollPane.setBounds(10, 11, 634, 349);
+				contentPane.add(scrollPane);
+				
 			}
 		});
 		btnNewButton_1.setBounds(102, 371, 132, 23);

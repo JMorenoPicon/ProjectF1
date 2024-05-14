@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 
 import Service.VerEscuderiasService;
+import lib.Escuderia;
 
 public class VerEscuderiasController {
 	
@@ -18,7 +19,7 @@ public class VerEscuderiasController {
 		return verEscuderiasNombreService.verNombreEscuderias();
 	}
 	
-	public ArrayList<String> verAllEscuderias(){
+	public ArrayList<Escuderia> verAllEscuderias(){
 		return verEscuderiasNombreService.verAllEscuderias();
 	}
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import BBDD.Conexion;
+import lib.Circuito;
 
 public class VerCircuitosService {
 
@@ -26,19 +27,23 @@ public class VerCircuitosService {
 		}
 	}
 	
-	public ArrayList<String> verAllCircuitos(){
+	public ArrayList<Circuito> verAllCircuitos(){
 		try {
 			String sql = ("SELECT * FROM circuito;");
 			ResultSet res = Conexion.EjecutarSentencia(sql);
-			ArrayList<String> arrayDatosCircuitos = new ArrayList<String>();
+			ArrayList<Circuito> arrayDatosCircuitos = new ArrayList<Circuito>();
 			while(res.next()) {
-				arrayDatosCircuitos.add(res.getString("nombreCircuito") +"\t"+"Pais: "+res.getString("paisCircuito") +"\t" +"Nº Vueltas: " +res.getString("numeroVueltas"));
-				arrayDatosCircuitos.add("\n");
+				String nombre = res.getString("nombreCircuito");
+				String pais = res.getString("paisCircuito");
+				int vueltas = res.getInt("numeroVueltas");
+				
+				Circuito circuito = new Circuito(nombre, pais, vueltas);
+				arrayDatosCircuitos.add(circuito);
 			}
 			return arrayDatosCircuitos;
 		}catch(SQLException e){
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
-			ArrayList<String> arrayVacia = new ArrayList<String>();
+			ArrayList<Circuito> arrayVacia = new ArrayList<Circuito>();
 			return arrayVacia;
 		}
 	}

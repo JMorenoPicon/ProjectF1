@@ -8,22 +8,27 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.VerCircuitosController;
 import Controller.VerPilotosController;
+import lib.Circuito;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
 
 public class verCircuitosJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTable table;
 
 //	/**
 //	 * Launch the application.
@@ -67,14 +72,30 @@ public class verCircuitosJF extends JFrame {
 		JButton btnNewButton_1 = new JButton("Ver Circuitos");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JTextPane txtpnCircuitos = new JTextPane();
-				txtpnCircuitos.setBackground(new Color(255, 255, 255));
-				txtpnCircuitos.setEditable(false);
-				txtpnCircuitos.setBounds(10, 11, 634, 349);
-				contentPane.add(txtpnCircuitos);
-				VerCircuitosController verPilotos = new VerCircuitosController();
-				ArrayList<String> listaCircuitos = verPilotos.verAllCircuitos();
-				txtpnCircuitos.setText(listaCircuitos.toString());
+				
+				VerCircuitosController verCircuitos = new VerCircuitosController();
+				ArrayList<Circuito> listaCircuitos = new ArrayList<Circuito>();
+				listaCircuitos = verCircuitos.verAllCircuitos();
+				
+				table = new JTable();
+				table.setBounds(10, 11, 644, 349);
+				contentPane.add(table);
+				
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Pais");
+				modelo.addColumn("Nº Vueltas");
+				
+				for(var circuito:listaCircuitos)
+				{
+					Object[] fila = {circuito.getNombre(),  circuito.getPais(), circuito.getNumeroVueltas()};
+					modelo.addRow(fila);
+				}
+				table.setModel(modelo);
+				
+				JScrollPane scrollPane = new JScrollPane(table);
+				scrollPane.setBounds(10, 11, 634, 349);
+				contentPane.add(scrollPane);
 			}
 		});
 		btnNewButton_1.setToolTipText("");
