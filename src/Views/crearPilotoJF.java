@@ -112,12 +112,12 @@ public class crearPilotoJF extends JFrame {
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		txtNombre = new JTextField();
-		txtNombre.setText("Nombre");
+		txtNombre.setToolTipText("Nombre");
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtDorsal = new JTextField();
-		txtDorsal.setText("Dorsal");
+		txtDorsal.setToolTipText("Dorsal");
 		panel.add(txtDorsal);
 		txtDorsal.setColumns(10);
 		

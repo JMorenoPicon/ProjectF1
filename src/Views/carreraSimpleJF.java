@@ -31,6 +31,9 @@ import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class carreraSimpleJF extends JFrame {
 
@@ -38,6 +41,8 @@ public class carreraSimpleJF extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTable table_1;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -78,15 +83,6 @@ public class carreraSimpleJF extends JFrame {
 		}else {
 			comboBox.setModel(new DefaultComboBoxModel(arrayCircuitosLista.toArray()));
 		}
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(10, 139, 634, 255);
-		contentPane.add(textArea);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(10, 78, 634, 37);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
 		comboBox.setBounds(156, 10, 389, 22);
 		contentPane.add(comboBox);
 		
@@ -113,15 +109,43 @@ public class carreraSimpleJF extends JFrame {
 				if(pilotos.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "No hay pilotos para competir, cree al menos uno", "Advertencia", JOptionPane.WARNING_MESSAGE);
 				}else {
-					Carrera carrera = new Carrera(pilotos, circuito);
+					textField_1 = new JTextField();
+					textField_1.setBounds(10, 78, 634, 37);
+					contentPane.add(textField_1);
+					textField_1.setColumns(10);
+
+					
+					table = new JTable();
+					table.setBounds(10, 121, 634, 273);
+					contentPane.add(table);
+					
 					
 					ResultadoCarrera resultado = carreraSimple.correr(pilotos, circuito);
-					String clasificacion = resultado.getPilotos().toString();
 					String nombrePilotoVueltaRapida = resultado.getPiloto().getNombre();
 					int vueltaRapida = resultado.getVueltaRapida();
 					
 					textField_1.setText(circuito.getNombre() +"\n" +nombrePilotoVueltaRapida +" Vuelta rápida en: nº " +vueltaRapida);
-					textArea.setText(clasificacion);
+					
+					DefaultTableModel modelo = new DefaultTableModel();
+					modelo.addColumn("Posición");
+					modelo.addColumn("Nombre");
+					modelo.addColumn("Escuderia");
+					modelo.addColumn("Puntos");
+					int posicion = 0;
+					
+					for(var piloto:resultado.getPilotos())
+					{
+						posicion += 1;
+						Object[] fila = { posicion, piloto.getNombre(), piloto.getEscuderia().getNombreEscuderia(), piloto.getPuntos()};
+						modelo.addRow(fila);
+					}
+					table.setModel(modelo);
+					
+					
+					JScrollPane scrollPane = new JScrollPane(table);
+					scrollPane.setBounds(10, 121, 634, 273);
+					scrollPane.setVisible(true);
+					contentPane.add(scrollPane);
 				}
 			}
 		});
