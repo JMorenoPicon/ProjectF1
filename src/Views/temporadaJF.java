@@ -8,10 +8,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.TemporadaController;
+import Controller.VerCircuitosController;
+import Controller.VerEscuderiasController;
+import Controller.VerPilotosController;
+import lib.Circuito;
+import lib.Escuderia;
+import lib.Piloto;
+import lib.Temporada;
+
 import javax.swing.JLabel;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import java.awt.SystemColor;
@@ -85,7 +96,23 @@ public class temporadaJF extends JFrame {
 		JButton BotonContinuar = new JButton("Continuar");
 		BotonContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ArrayList<Circuito> circuitos = new ArrayList<Circuito>();
+				ArrayList<Piloto> pilotos = new ArrayList<Piloto>();
+				ArrayList<Escuderia> escuderias = new ArrayList<Escuderia>();
 				
+				VerCircuitosController verCircuitos = new VerCircuitosController();
+				circuitos = verCircuitos.verAllCircuitos();
+				
+				VerPilotosController verPilotos = new VerPilotosController();
+				pilotos = verPilotos.verAllPilotos();
+				
+				VerEscuderiasController verEscuderias = new VerEscuderiasController();
+				escuderias = verEscuderias.verAllEscuderias();
+				
+				
+				Temporada temporada = new Temporada(circuitos, escuderias, pilotos);
+				
+				TemporadaController temporadaController = new TemporadaController();//Aqui me quedo, tengo que editar temporadaController
 			}
 		});
 		BotonContinuar.setBackground(SystemColor.activeCaption);

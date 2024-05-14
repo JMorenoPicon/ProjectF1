@@ -36,8 +36,4 @@ public class ResultadoCarrera {
 	public void setVueltaRapida(int vueltaRapida) {
 		this.vueltaRapida = vueltaRapida;
 	}
-	
-	
-	
-	
 }

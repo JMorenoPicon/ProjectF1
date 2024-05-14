@@ -3,50 +3,43 @@ import java.util.ArrayList;
 import BBDD.*;
 
 public class Temporada {
-	private ArrayList<Carrera> carreras;
-    private ArrayList<Escuderia> clasificacionEscuderias;
-    private ArrayList<Piloto> clasificacionPilotos;
+	private ArrayList<Circuito> circuitos;
+    private ArrayList<Escuderia> escuderias;
+    private ArrayList<Piloto> pilotos;
 
-    public Temporada(ArrayList<Carrera> carreras, ArrayList<Escuderia> clasificacionEscuderias, ArrayList<Piloto> clasificacionPilotos) {
-        this.carreras = carreras;
-        this.clasificacionEscuderias = clasificacionEscuderias;
-        this.clasificacionPilotos = clasificacionPilotos;
+    public Temporada(ArrayList<Circuito> circuitos, ArrayList<Escuderia> escuderias, ArrayList<Piloto> pilotos) {
+        this.circuitos = circuitos;
+        this.escuderias = escuderias;
+        this.pilotos = pilotos;
     }
 
-    public ArrayList<Carrera> getCarreras() {
-		return carreras;
+	public ArrayList<Circuito> getCircuitos() {
+		return circuitos;
 	}
 
-
-
-	public void setCarreras(ArrayList<Carrera> carreras) {
-		this.carreras = carreras;
+	public void setCircuitos(ArrayList<Circuito> circuitos) {
+		this.circuitos = circuitos;
 	}
 
-
-
-	public ArrayList<Escuderia> getClasificacionEscuderias() {
-		return clasificacionEscuderias;
+	public ArrayList<Escuderia> getEscuderias() {
+		return escuderias;
 	}
 
-
-
-	public void setClasificacionEscuderias(ArrayList<Escuderia> clasificacionEscuderias) {
-		this.clasificacionEscuderias = clasificacionEscuderias;
+	public void setEscuderias(ArrayList<Escuderia> escuderias) {
+		this.escuderias = escuderias;
 	}
 
-
-
-	public ArrayList<Piloto> getClasificacionPilotos() {
-		return clasificacionPilotos;
+	public ArrayList<Piloto> getPilotos() {
+		return pilotos;
 	}
 
-
-
-	public void setClasificacionPilotos(ArrayList<Piloto> clasificacionPilotos) {
-		this.clasificacionPilotos = clasificacionPilotos;
+	public void setPilotos(ArrayList<Piloto> pilotos) {
+		this.pilotos = pilotos;
 	}
+	
 }
+    
+    
 
 
 
