@@ -17,4 +17,8 @@ public class VerEscuderiasController {
 	public ArrayList<String> verNombreEscuderias(){
 		return verEscuderiasNombreService.verNombreEscuderias();
 	}
+	
+	public ArrayList<String> verAllEscuderias(){
+		return verEscuderiasNombreService.verAllEscuderias();
+	}
 }

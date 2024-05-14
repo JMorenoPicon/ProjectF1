@@ -1,5 +1,6 @@
 package Views;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -7,10 +8,16 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+
+import Controller.VerCircuitosController;
+import Controller.VerPilotosController;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class verCircuitosJF extends JFrame {
@@ -57,10 +64,23 @@ public class verCircuitosJF extends JFrame {
 			}
 		});
 		
-		JLabel lblNewLabel_1 = new JLabel("Circuitos");
-		lblNewLabel_1.setBounds(10, 11, 634, 215);
-		contentPane.add(lblNewLabel_1);
-		btnNewButton.setBounds(285, 371, 89, 23);
+		JButton btnNewButton_1 = new JButton("Ver Circuitos");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JTextPane txtpnCircuitos = new JTextPane();
+				txtpnCircuitos.setBackground(new Color(255, 255, 255));
+				txtpnCircuitos.setEditable(false);
+				txtpnCircuitos.setBounds(10, 11, 634, 349);
+				contentPane.add(txtpnCircuitos);
+				VerCircuitosController verPilotos = new VerCircuitosController();
+				ArrayList<String> listaCircuitos = verPilotos.verAllCircuitos();
+				txtpnCircuitos.setText(listaCircuitos.toString());
+			}
+		});
+		btnNewButton_1.setToolTipText("");
+		btnNewButton_1.setBounds(102, 371, 132, 23);
+		contentPane.add(btnNewButton_1);
+		btnNewButton.setBounds(409, 371, 132, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("");

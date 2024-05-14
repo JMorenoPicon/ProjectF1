@@ -8,12 +8,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.CrearCircuitoController;
+import lib.Circuito;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 public class crearCircuitoJF extends JFrame {
 
@@ -55,6 +62,29 @@ public class crearCircuitoJF extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Confirmar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre = textField.getText();
+				String pais = txtPas.getText();
+				String vueltasString = txtNVueltas.getText();
+				
+				CrearCircuitoController crearCircuito = new CrearCircuitoController();
+					if(crearCircuito.checkVueltas(vueltasString)) {
+						int vueltas = Integer.parseInt(txtNVueltas.getText());
+						Circuito circuito = new Circuito(nombre, pais, vueltas);
+						if(crearCircuito.checkRegistro(circuito)) {
+							JOptionPane.showMessageDialog(null, "Circuito creado");
+							new pantallaInicioJF().setVisible(true);
+							crearCircuitoJF.this.dispose();
+						}else {
+							JOptionPane.showMessageDialog(null, "Vuelva a intentarlo", "Advertencia", JOptionPane.WARNING_MESSAGE);
+						}
+					}else {
+						JOptionPane.showMessageDialog(null, "Añada un número de vueltas válido", "Advertencia", JOptionPane.WARNING_MESSAGE);
+					}
+				}
+				
+		});
 		btnNewButton.setBounds(230, 51, 104, 23);
 		contentPane.add(btnNewButton);
 		
@@ -69,7 +99,7 @@ public class crearCircuitoJF extends JFrame {
 		contentPane.add(btnCancelar);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(228, 11, 221, 28);
+		panel.setBounds(126, 11, 417, 28);
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
@@ -96,5 +126,4 @@ public class crearCircuitoJF extends JFrame {
 		ImageIcon img = new ImageIcon(icon.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
 		lblNewLabel.setIcon(img);
 	}
-
 }

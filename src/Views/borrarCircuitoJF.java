@@ -7,14 +7,23 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import Controller.BorrarCircuitoController;
+import Controller.VerCircuitosController;
+import lib.Circuito;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
 
 public class borrarCircuitoJF extends JFrame {
 
@@ -62,6 +71,18 @@ public class borrarCircuitoJF extends JFrame {
 			}
 		});
 		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		
+		VerCircuitosController verCircuitos = new VerCircuitosController();
+		ArrayList<String> arrayCircuitosLista = verCircuitos.verNombreCircuitos();
+		if(arrayCircuitosLista.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "No hay circuitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+		}else {
+			comboBox.setModel(new DefaultComboBoxModel(arrayCircuitosLista.toArray()));
+		}
+		comboBox.setBounds(62, 51, 298, 22);
+		contentPane.add(comboBox);
+		
 		txtSeleccioneElCircuito = new JTextField();
 		txtSeleccioneElCircuito.setText("Seleccione el circuito que desea eliminar");
 		txtSeleccioneElCircuito.setToolTipText("");
@@ -76,14 +97,21 @@ public class borrarCircuitoJF extends JFrame {
 		Button button = new Button("Confirmar");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String item;
+				item = comboBox.getSelectedItem().toString();
+				Circuito circuito = new Circuito(item);
+				if(new BorrarCircuitoController().checkDelete(circuito)) {
+					JOptionPane.showMessageDialog(null, "Circuito eliminado");
+					
+					new pantallaInicioJF().setVisible(true);
+					borrarCircuitoJF.this.dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "Error, intentelo de nuevo", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				}
 			}
 		});
 		button.setBounds(366, 51, 92, 22);
 		contentPane.add(button);
-		
-		Choice choice = new Choice();
-		choice.setBounds(62, 51, 298, 20);
-		contentPane.add(choice);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(0, 0, 654, 405);
@@ -93,5 +121,4 @@ public class borrarCircuitoJF extends JFrame {
 		ImageIcon img = new ImageIcon(icon.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
 		lblNewLabel.setIcon(img);
 	}
-
 }

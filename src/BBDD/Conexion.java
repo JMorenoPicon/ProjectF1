@@ -73,6 +73,21 @@ public class Conexion {
     	}
     }
     
+    public static boolean EjecutarInsertCircuito(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, "Circuito ya existente, por favor elija otro nombre para tu circuito");
+//    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
     public static boolean EjecutarDeletePiloto(String Sentencia){
     	Conectar();
     	try{
@@ -101,6 +116,20 @@ public class Conexion {
     	}
     }
     
+    public static boolean EjecutarDeleteCircuito(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
     public static boolean EjecutarUpdatePiloto(String Sentencia){
     	Conectar();
     	try{
@@ -114,6 +143,38 @@ public class Conexion {
     		return false;
     	}catch(SQLException e){
     		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarUpdateEscuderia(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLIntegrityConstraintViolationException e){
+    		JOptionPane.showMessageDialog(null, "Escuderia ya existente, por favor elija otro nombre");
+    		CerrarConexion();
+    		return false;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarUpdateCircuito(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		System.out.println(e.getStackTrace());;
     		CerrarConexion();
     		return false;
     	}

@@ -8,16 +8,17 @@ import javax.swing.JOptionPane;
 
 import BBDD.Conexion;
 
-public class VerEscuderiasService {
-	public ArrayList<String> verNombreEscuderias(){
+public class VerCircuitosService {
+
+	public ArrayList<String> verNombreCircuitos(){
 		try {
-			String sql = ("SELECT nombreEscuderia FROM escuderia;");
+			String sql = ("SELECT nombreCircuito FROM circuito");
 			ResultSet res = Conexion.EjecutarSentencia(sql);
-			ArrayList<String> arrayEscuderias = new ArrayList<String>();
+			ArrayList<String> arrayCircuitos = new ArrayList<String>();
 			while(res.next()) {
-				arrayEscuderias.add(res.getString("nombreEscuderia"));
+				arrayCircuitos.add(res.getString("nombreCircuito"));
 			}
-			return arrayEscuderias;
+			return arrayCircuitos;
 		}catch(SQLException e) {
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<String> arrayVacia = new ArrayList<String>();
@@ -25,16 +26,16 @@ public class VerEscuderiasService {
 		}
 	}
 	
-	public ArrayList<String> verAllEscuderias(){
+	public ArrayList<String> verAllCircuitos(){
 		try {
-			String sql = ("SELECT * FROM escuderia;");
+			String sql = ("SELECT * FROM circuito;");
 			ResultSet res = Conexion.EjecutarSentencia(sql);
-			ArrayList<String> arrayDatosEscuderias = new ArrayList<String>();
+			ArrayList<String> arrayDatosCircuitos = new ArrayList<String>();
 			while(res.next()) {
-				arrayDatosEscuderias.add(res.getString("nombreEscuderia") +"\t"+"Motor: "+res.getString("motor"));
-				arrayDatosEscuderias.add("\n");
+				arrayDatosCircuitos.add(res.getString("nombreCircuito") +"\t"+"Pais: "+res.getString("paisCircuito") +"\t" +"Nº Vueltas: " +res.getString("numeroVueltas"));
+				arrayDatosCircuitos.add("\n");
 			}
-			return arrayDatosEscuderias;
+			return arrayDatosCircuitos;
 		}catch(SQLException e){
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<String> arrayVacia = new ArrayList<String>();

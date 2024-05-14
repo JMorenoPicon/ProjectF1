@@ -6,11 +6,21 @@ public class Circuito {
     private int numeroCircuito;
     private int numeroVueltas;
     
-    public Circuito(String nombre, String pais, int numeroCircuito, int numeroVueltas) {
+    public Circuito(String nombre, String pais, int numeroCircuito, int numeroVueltas, int posicionCalendario) {
         this.nombre = nombre;
         this.pais = pais;
         this.numeroCircuito = numeroCircuito;
         this.numeroVueltas = numeroVueltas;
+    }
+    
+    public Circuito(String nombre, String pais, int numeroVueltas) {
+        this.nombre = nombre;
+        this.pais = pais;
+        this.numeroVueltas = numeroVueltas;
+    }
+    
+    public Circuito(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getNombre() {

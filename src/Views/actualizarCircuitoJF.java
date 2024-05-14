@@ -4,23 +4,42 @@ import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Controller.ActualizarCircuitoController;
+import Controller.ActualizarPilotoController;
+import Controller.CrearCircuitoController;
+import Controller.CrearPilotoController;
+import Controller.VerCircuitosController;
+import Controller.VerPilotosController;
+import lib.Circuito;
+import lib.Escuderia;
+import lib.Piloto;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Choice;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
 
 public class actualizarCircuitoJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSeleccioneElCircuito;
+	private JTextField txtEditeLosCampos;
+	private JTextField txtNombre;
+	private JTextField txtPais;
+	private JTextField txtNVueltas;
 
 //	/**
 //	 * Launch the application.
@@ -53,6 +72,45 @@ public class actualizarCircuitoJF extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		txtNVueltas = new JTextField();
+		txtNVueltas.setText("Nº Vueltas");
+		txtNVueltas.setBounds(512, 42, 86, 20);
+		contentPane.add(txtNVueltas);
+		txtNVueltas.setColumns(10);
+		
+		txtPais = new JTextField();
+		txtPais.setText("Pais");
+		txtPais.setBounds(416, 42, 86, 20);
+		contentPane.add(txtPais);
+		txtPais.setColumns(10);
+		
+		txtNombre = new JTextField();
+		txtNombre.setText("Nombre");
+		txtNombre.setBounds(320, 42, 86, 20);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		txtEditeLosCampos = new JTextField();
+		txtEditeLosCampos.setEditable(false);
+		txtEditeLosCampos.setHorizontalAlignment(SwingConstants.CENTER);
+		txtEditeLosCampos.setText("Edite los campos necesarios");
+		txtEditeLosCampos.setBounds(320, 11, 278, 20);
+		contentPane.add(txtEditeLosCampos);
+		txtEditeLosCampos.setColumns(10);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		
+		VerCircuitosController verCircuitos = new VerCircuitosController();
+		ArrayList<String> arrayCircuitosLista = verCircuitos.verNombreCircuitos();
+		if(arrayCircuitosLista.isEmpty()) {
+			JOptionPane.showMessageDialog(null, "No hay circuitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
+		}else {
+			comboBox.setModel(new DefaultComboBoxModel(arrayCircuitosLista.toArray()));
+		}
+		
+		comboBox.setBounds(51, 37, 243, 22);
+		contentPane.add(comboBox);
+		
 		txtSeleccioneElCircuito = new JTextField();
 		txtSeleccioneElCircuito.setEditable(false);
 		txtSeleccioneElCircuito.setHorizontalAlignment(SwingConstants.CENTER);
@@ -68,15 +126,39 @@ public class actualizarCircuitoJF extends JFrame {
 				actualizarCircuitoJF.this.dispose();
 			}
 		});
-		btnNewButton_1.setBounds(410, 37, 100, 23);
+		btnNewButton_1.setBounds(409, 343, 100, 23);
 		contentPane.add(btnNewButton_1);
 		
-		Choice choice = new Choice();
-		choice.setBounds(51, 37, 243, 20);
-		contentPane.add(choice);
-		
 		JButton btnNewButton = new JButton("Confirmar");
-		btnNewButton.setBounds(300, 37, 100, 23);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String itemCircuito;
+				itemCircuito = comboBox.getSelectedItem().toString();
+				
+				//Aqui tengo que coger los datos de los circuitos que pongo en los textbox y en el desplegable de la escuderia, guardarlos en variables y pasarselo al constructor de abajo
+				String nombreNuevoCircuito = txtNombre.getText();
+				String paisNuevoCircuito = txtPais.getText();
+				String vueltas = txtNVueltas.getText();
+				Integer numeroVueltas = null;
+				
+				CrearCircuitoController actualizarPiloto = new CrearCircuitoController();
+				boolean res = actualizarPiloto.checkVueltas(vueltas); //LLamo a otro controlador porque la funcion que quiero comprobar es la misma
+				if(res) {
+					numeroVueltas = Integer.parseInt(vueltas);
+					Circuito circuito = new Circuito(nombreNuevoCircuito, paisNuevoCircuito, numeroVueltas);
+					if(new ActualizarCircuitoController().actualizarCircuito(circuito, itemCircuito)) {
+						JOptionPane.showMessageDialog(null, "Circuito actualizado");
+					new pantallaInicioJF().setVisible(true);
+					actualizarCircuitoJF.this.dispose();
+				}
+				
+				//Me falta por controlar el que no se introduzca un nombre en el cuadro de texto y se deje vacio. En crear circuito creo que tambien me pasa
+				}else {
+					JOptionPane.showMessageDialog(null, "Introduzca un numero de vueltas válido", "Advertencia", JOptionPane.WARNING_MESSAGE);
+				}
+			}
+		});
+		btnNewButton.setBounds(151, 343, 100, 23);
 		contentPane.add(btnNewButton);
 		
 		JLabel lblNewLabel = new JLabel("");

@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Controller.ActualizarEscuderiaController;
 import Controller.CrearEscuderiaController;
 import Controller.VerEscuderiasController;
 import lib.Escuderia;
@@ -102,7 +103,7 @@ public class actualizarEscuderiaJF extends JFrame {
 				String nombreNuevoEscuderia = txtNombre.getText();
 				String motorNuevo = txtMotor.getText();
 				
-				CrearEscuderiaController actualizarEscuderia = new CrearEscuderiaController();//LLamo a otro controlador porque la funcion que quiero comprobar es la misma
+//				CrearEscuderiaController actualizarEscuderia = new CrearEscuderiaController();//LLamo a otro controlador porque la funcion que quiero comprobar es la misma
 				Escuderia escuderia = new Escuderia(nombreNuevoEscuderia, motorNuevo);
 				new ActualizarEscuderiaController().actualizarEscuderia(escuderia, itemEscuderia);
 				new pantallaInicioJF().setVisible(true);
