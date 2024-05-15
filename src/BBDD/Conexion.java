@@ -33,7 +33,7 @@ public class Conexion {
         }
     }
     
-    public static ResultSet EjecutarSentencia(String Sentencia){
+	public static ResultSet EjecutarSentencia(String Sentencia){
     	Conectar();
         try {
         	resultado = consulta.executeQuery(Sentencia);
@@ -175,6 +175,49 @@ public class Conexion {
     		return true;
     	}catch(SQLException e){
     		System.out.println(e.getStackTrace());;
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarUpdatePuntosPiloto(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		JOptionPane.showMessageDialog(null, "Fallo insercion puntos en piloto");
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarResetPilotos(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, e.getMessage());
+    		CerrarConexion();
+    		return false;
+    	}
+    }
+    
+    public static boolean EjecutarResetEscuderias(String Sentencia){
+    	Conectar();
+    	try{
+    		consulta.executeUpdate(Sentencia);
+    		System.out.println("Done.");
+    		CerrarConexion();
+    		return true;
+    	}catch(SQLException e){
+    		JOptionPane.showMessageDialog(null, e.getMessage());
     		CerrarConexion();
     		return false;
     	}

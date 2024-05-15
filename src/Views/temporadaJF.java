@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Controller.TemporadaController;
 import Controller.VerCircuitosController;
@@ -16,6 +17,7 @@ import Controller.VerPilotosController;
 import lib.Circuito;
 import lib.Escuderia;
 import lib.Piloto;
+import lib.ResultadoTemporada;
 import lib.Temporada;
 
 import javax.swing.JLabel;
@@ -31,6 +33,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
 
 public class temporadaJF extends JFrame {
 
@@ -38,6 +42,8 @@ public class temporadaJF extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField mensajeAviso;
+	private JTable table;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -96,6 +102,11 @@ public class temporadaJF extends JFrame {
 		JButton BotonContinuar = new JButton("Continuar");
 		BotonContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				TemporadaController temporadaController = new TemporadaController();
+				temporadaController.resetPuntosPilotos();
+				temporadaController.resetPuntosEscuderias();
+				
 				ArrayList<Circuito> circuitos = new ArrayList<Circuito>();
 				ArrayList<Piloto> pilotos = new ArrayList<Piloto>();
 				ArrayList<Escuderia> escuderias = new ArrayList<Escuderia>();
@@ -112,7 +123,40 @@ public class temporadaJF extends JFrame {
 				
 				Temporada temporada = new Temporada(circuitos, escuderias, pilotos);
 				
-				TemporadaController temporadaController = new TemporadaController();//Aqui me quedo, tengo que editar temporadaController
+				ResultadoTemporada resultado = temporadaController.simularTemporada(temporada);
+				
+				//resultado lo meto en la tabla y que aparezca en la vista
+				textField_1 = new JTextField();
+				textField_1.setBounds(10, 78, 634, 37);
+				textField_1.setEditable(false);
+				contentPane.add(textField_1);
+				textField_1.setColumns(10);
+				
+				textField_1.setText("Temporada simulada. Resultados:");
+				
+				table = new JTable();
+				table.setBounds(151, 123, 1, 1);
+				contentPane.add(table);
+				
+				
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.addColumn("Posición");
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Escuderia");
+				modelo.addColumn("Puntos");
+				int posicion = 0;
+				
+				for(var piloto:resultado.getClasificacionFinalPilotos())
+				{
+					posicion += 1;
+					Object[] fila = { posicion, piloto.getNombre(), piloto.getEscuderia().getNombreEscuderia(), piloto.getPuntos()};
+					modelo.addRow(fila);
+				}
+				table.setModel(modelo);
+				
+				JScrollPane scrollPane = new JScrollPane(table);
+				scrollPane.setBounds(10, 121, 634, 273);
+				contentPane.add(scrollPane);
 			}
 		});
 		BotonContinuar.setBackground(SystemColor.activeCaption);
@@ -132,5 +176,4 @@ public class temporadaJF extends JFrame {
 		
 		contentPane.add(imagenFondoLbl);
 	}
-
 }
