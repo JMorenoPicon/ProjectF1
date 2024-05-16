@@ -1,6 +1,8 @@
 package Service;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilterWriter;
 import java.io.IOException;
@@ -183,5 +185,40 @@ public class TemporadaService {
 			e.printStackTrace();
 		}
 		return clasificacion;
+	}
+
+	public ArrayList<Piloto> leerCircuito(String nombreCircuito) {
+		//TODO: Aqui tengo que hacer el buffered reades para leer el fichero con el nombre del circuito, guardarlo en variables y meterlos a un arraylist de pilotos para devolverlo
+		
+		ArrayList<Piloto> clasificacionCircuito = new ArrayList<Piloto>();
+		
+		Path relativePath = Paths.get("src/Recursos/ResultadoCarreras");
+		Path absolutePath = relativePath.toAbsolutePath();
+		
+		String ruta = absolutePath.toString() + "\\" + nombreCircuito +".csv";
+		
+		try{
+
+            BufferedReader bufferLectura = new BufferedReader(new FileReader(ruta));
+
+            String linea = bufferLectura.readLine();
+            int numeroColumnas = linea.split(";").length;
+
+            while ((linea = bufferLectura.readLine()) != null){
+                String[] datos = linea.split(";");
+
+                if(datos != null && datos.length == numeroColumnas){
+                    Piloto piloto = new Piloto(Integer.parseInt(datos[0]), datos[1], datos[2], Integer.parseInt(datos[3]));
+                    clasificacionCircuito.add (piloto);
+                }
+
+                
+            }
+            bufferLectura.close();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+		return clasificacionCircuito;
 	}
 }

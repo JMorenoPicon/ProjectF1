@@ -13,7 +13,7 @@ public class VerCircuitosService {
 
 	public ArrayList<String> verNombreCircuitos(){
 		try {
-			String sql = ("SELECT nombreCircuito FROM circuito");
+			String sql = "SELECT nombreCircuito FROM circuito";
 			ResultSet res = Conexion.EjecutarSentencia(sql);
 			ArrayList<String> arrayCircuitos = new ArrayList<String>();
 			while(res.next()) {
@@ -31,7 +31,7 @@ public class VerCircuitosService {
 	
 	public ArrayList<Circuito> verAllCircuitos(){
 		try {
-			String sql = ("SELECT * FROM circuito;");
+			String sql = "SELECT * FROM circuito;";
 			ResultSet res = Conexion.EjecutarSentencia(sql);
 			ArrayList<Circuito> arrayDatosCircuitos = new ArrayList<Circuito>();
 			while(res.next()) {
@@ -54,7 +54,7 @@ public class VerCircuitosService {
 
 	public int verVueltasCircuito(String nombreCircuito) {
 		try {
-			String sql = ("SELECT * FROM circuito WHERE nombreCircuito = '" +nombreCircuito +"';");
+			String sql = "SELECT * FROM circuito WHERE nombreCircuito = '" +nombreCircuito +"';";
 			ResultSet res = Conexion.EjecutarSentencia(sql);
 			int vueltas = -1;
 			while(res.next()) {

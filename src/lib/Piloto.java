@@ -5,6 +5,8 @@ public class Piloto {
     private Escuderia escuderia;
     private int puntos;
     private Integer dorsal;
+    private int posicion;
+    private String nombreEscuderia;
 
     public Piloto(String nombre, Escuderia escuderia, int puntos, int superLicencia, Integer dorsal) {
         this.nombre = nombre;
@@ -38,8 +40,31 @@ public class Piloto {
     	this.escuderia = escuderia;
     	this.puntos = puntos;
     }
+    
+    public Piloto(int posicion, String nombre, String escuderia, int puntos){
+    	this.posicion = posicion;
+    	this.nombre = nombre;
+    	this.nombreEscuderia = escuderia;
+    	this.puntos = puntos;
+    }
 
-    public String getNombre() {
+    public int getPosicion() {
+		return posicion;
+	}
+
+	public void setPosicion(int posicion) {
+		this.posicion = posicion;
+	}
+
+	public String getNombreEscuderia() {
+		return nombreEscuderia;
+	}
+
+	public void setNombreEscuderia(String nombreEscuderia) {
+		this.nombreEscuderia = nombreEscuderia;
+	}
+
+	public String getNombre() {
         return nombre;
     }
 

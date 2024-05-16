@@ -38,4 +38,8 @@ public class TemporadaController {
 		return temporadaService.verClasificacionPilotos();
 	}
 
+	public ArrayList<Piloto> leerCircuito(String nombreCircuito) {
+		return temporadaService.leerCircuito(nombreCircuito);
+	}
+
 }

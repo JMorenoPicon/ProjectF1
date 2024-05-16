@@ -90,7 +90,7 @@ public class temporadaJF extends JFrame {
 		table.setVisible(false);
 		contentPane.add(table);
 		
-		JComboBox<Circuito> comboBox = new JComboBox<Circuito>();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.setBounds(172, 11, 211, 22);
 		comboBox.setVisible(false);
 		contentPane.add(comboBox);
@@ -108,7 +108,26 @@ public class temporadaJF extends JFrame {
 		JButton btnNewButton_2 = new JButton("Ver Carrera");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new verCarreraJF().setVisible(true);
+				
+				TemporadaController temporadaController = new TemporadaController();
+				String item = comboBox.getSelectedItem().toString();
+				
+				ArrayList<Piloto> clasificacionCircuito = new ArrayList<Piloto>();
+				clasificacionCircuito = temporadaController.leerCircuito(item);
+				
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.addColumn("Posición");
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Escuderia");
+				modelo.addColumn("Puntos");
+				int posicion = 0;
+				for(var piloto : clasificacionCircuito){
+					posicion += 1;
+					Object[] fila = { posicion, piloto.getNombre(), piloto.getNombreEscuderia(), piloto.getPuntos()};
+					modelo.addRow(fila);
+				}
+				table.setModel(modelo);
+				
 			}
 		});
 		btnNewButton_2.setBounds(393, 11, 152, 23);
