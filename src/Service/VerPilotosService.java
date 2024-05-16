@@ -72,4 +72,27 @@ public class VerPilotosService {
 //			Conexion.CerrarConexion();
 		}
 	}
+
+	public ArrayList<Piloto> verAllPilotosTemporada() {
+		try {
+			String sql = ("SELECT * FROM piloto WHERE escuderia is NOT NULL;");
+			ResultSet res = Conexion.EjecutarSentencia(sql);
+			ArrayList<Piloto> arrayDatosPilotos = new ArrayList<Piloto>();
+			while(res.next()) {
+				int dorsal = res.getInt("dorsal");
+				String nombre = res.getString("nombrePiloto");
+				String escuderiaString = res.getString("escuderia");
+				Escuderia escuderia = new Escuderia(escuderiaString);
+				Piloto piloto = new Piloto(nombre, escuderia, dorsal);
+				arrayDatosPilotos.add(piloto);
+			}
+			return arrayDatosPilotos;
+		}catch(SQLException e){
+			JOptionPane.showMessageDialog(null, e.getStackTrace());
+			ArrayList<Piloto> arrayVacia = new ArrayList<Piloto>();
+			return arrayVacia;
+		}finally {
+//			Conexion.CerrarConexion();
+		}
+	}
 }

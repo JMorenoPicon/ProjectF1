@@ -101,6 +101,7 @@ public class borrarEscuderiaJF extends JFrame {
 		contentPane.add(button);
 		
 		txtSeleccioneLaEscudera = new JTextField();
+		txtSeleccioneLaEscudera.setEditable(false);
 		txtSeleccioneLaEscudera.setHorizontalAlignment(SwingConstants.CENTER);
 		txtSeleccioneLaEscudera.setText("Seleccione la escudería que desea borrar");
 		txtSeleccioneLaEscudera.setBounds(62, 25, 298, 20);

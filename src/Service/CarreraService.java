@@ -17,7 +17,7 @@ public class CarreraService {
 	public ArrayList<Piloto> obtenerPilotos() {
 		try {
 //			Conexion.Conectar();
-			String sql = "SELECT * FROM piloto;";
+			String sql = "SELECT * FROM piloto WHERE escuderia is NOT NULL;";
 			ResultSet res = Conexion.EjecutarSentencia(sql);
 			ArrayList<Piloto> listaPilotos = new ArrayList<Piloto>();
 			

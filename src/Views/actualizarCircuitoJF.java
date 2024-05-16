@@ -66,19 +66,19 @@ public class actualizarCircuitoJF extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtNVueltas = new JTextField();
-		txtNVueltas.setText("Nº Vueltas");
+		txtNVueltas.setToolTipText("Nº Vueltas");
 		txtNVueltas.setBounds(512, 42, 86, 20);
 		contentPane.add(txtNVueltas);
 		txtNVueltas.setColumns(10);
 		
 		txtPais = new JTextField();
-		txtPais.setText("Pais");
+		txtPais.setToolTipText("Pais");
 		txtPais.setBounds(416, 42, 86, 20);
 		contentPane.add(txtPais);
 		txtPais.setColumns(10);
 		
 		txtNombre = new JTextField();
-		txtNombre.setText("Nombre");
+		txtNombre.setToolTipText("Nombre");
 		txtNombre.setBounds(320, 42, 86, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);

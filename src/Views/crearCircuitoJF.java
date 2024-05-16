@@ -104,17 +104,17 @@ public class crearCircuitoJF extends JFrame {
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		textField = new JTextField();
-		textField.setText("Nombre");
+		textField.setToolTipText("Nombre Circuito");
 		textField.setColumns(10);
 		panel.add(textField);
 		
 		txtPas = new JTextField();
-		txtPas.setText("País");
+		txtPas.setToolTipText("Pais");
 		txtPas.setColumns(10);
 		panel.add(txtPas);
 		
 		txtNVueltas = new JTextField();
-		txtNVueltas.setText("Nº Vueltas");
+		txtNVueltas.setToolTipText("Nº Vueltas");
 		panel.add(txtNVueltas);
 		txtNVueltas.setColumns(10);
 		

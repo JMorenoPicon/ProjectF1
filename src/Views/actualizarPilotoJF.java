@@ -98,15 +98,15 @@ public class actualizarPilotoJF extends JFrame {
 		contentPane.add(comboBox_1);
 		
 		txtDorsal = new JTextField();
+		txtDorsal.setToolTipText("Dorsal");
 		txtDorsal.setHorizontalAlignment(SwingConstants.CENTER);
-		txtDorsal.setText("Dorsal");
 		txtDorsal.setBounds(320, 79, 86, 20);
 		contentPane.add(txtDorsal);
 		txtDorsal.setColumns(10);
 		
 		txtNombre = new JTextField();
+		txtNombre.setToolTipText("Nombre");
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		txtNombre.setText("Nombre");
 		txtNombre.setBounds(320, 38, 86, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);

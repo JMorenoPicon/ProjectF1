@@ -96,12 +96,12 @@ public class crearEscuderiaJF extends JFrame {
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		textField = new JTextField();
-		textField.setText("Nombre");
+		textField.setToolTipText("Nombre Escuderia");
 		textField.setColumns(10);
 		panel.add(textField);
 		
 		txtMotor = new JTextField();
-		txtMotor.setText("Motor");
+		txtMotor.setToolTipText("Motor");
 		txtMotor.setColumns(10);
 		panel.add(txtMotor);
 		

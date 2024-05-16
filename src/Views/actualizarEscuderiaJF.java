@@ -76,15 +76,15 @@ public class actualizarEscuderiaJF extends JFrame {
 		}
 		
 		txtMotor = new JTextField();
+		txtMotor.setToolTipText("Motor");
 		txtMotor.setHorizontalAlignment(SwingConstants.CENTER);
-		txtMotor.setText("Motor");
 		txtMotor.setBounds(208, 102, 86, 20);
 		contentPane.add(txtMotor);
 		txtMotor.setColumns(10);
 		
 		txtNombre = new JTextField();
+		txtNombre.setToolTipText("Nombre");
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		txtNombre.setText("Nombre");
 		txtNombre.setBounds(51, 102, 86, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);

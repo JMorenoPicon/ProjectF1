@@ -223,7 +223,7 @@ public class temporadaJF extends JFrame {
 				circuitos = verCircuitos.verAllCircuitos();
 				
 				VerPilotosController verPilotos = new VerPilotosController();
-				pilotos = verPilotos.verAllPilotos();
+				pilotos = verPilotos.verAllPilotosTemporada();
 				
 				VerEscuderiasController verEscuderias = new VerEscuderiasController();
 				escuderias = verEscuderias.verAllEscuderias();
