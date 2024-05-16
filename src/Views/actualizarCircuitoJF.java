@@ -1,6 +1,5 @@
 package Views;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -11,19 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ActualizarCircuitoController;
-import Controller.ActualizarPilotoController;
 import Controller.CrearCircuitoController;
-import Controller.CrearPilotoController;
 import Controller.VerCircuitosController;
-import Controller.VerPilotosController;
 import lib.Circuito;
-import lib.Escuderia;
-import lib.Piloto;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import java.awt.Choice;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;

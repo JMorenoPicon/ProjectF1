@@ -1,5 +1,6 @@
 package Service;
 import javax.swing.JOptionPane;
+
 import BBDD.Conexion;
 import lib.Circuito;
 
@@ -19,7 +20,7 @@ public class CrearCircuitoService {
 	
 	public boolean checkVueltas(String vueltas) {
 		try{
-			int vueltasInt = Integer.parseInt(vueltas);
+			Integer.parseInt(vueltas);
 			return true;
 		}catch(Exception e) {
 			return false;

@@ -1,6 +1,5 @@
 package lib;
 import java.util.ArrayList;
-import BBDD.*;
 
 public class Temporada {
 	private ArrayList<Circuito> circuitos;

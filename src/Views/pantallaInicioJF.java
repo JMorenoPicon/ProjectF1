@@ -183,15 +183,6 @@ public class pantallaInicioJF extends JFrame {
 		});
 		TemporadaMenu.add(ComenzarTemporada);
 		
-		JMenuItem ContinuarTemporada = new JMenuItem("Continuar temporada");
-		ContinuarTemporada.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new continuarTemporadaJF().setVisible(true);
-				pantallaInicioJF.this.dispose();
-			}
-		});
-		TemporadaMenu.add(ContinuarTemporada);
-		
 		JMenuItem CarreraSimple = new JMenuItem("Carrera simple");
 		CarreraSimple.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
