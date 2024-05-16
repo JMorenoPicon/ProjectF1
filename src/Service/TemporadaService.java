@@ -62,7 +62,7 @@ public class TemporadaService {
 			Integer posicion = 0;
 			try {
 				BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
-				bw.write("Posicion,Nombre,Escuderia,Puntos");
+				bw.write("Posicion;Nombre;Escuderia;Puntos\n");
 				
 				for(Piloto piloto: clasificacionCarrera) {
 					posicion += 1;
@@ -86,9 +86,9 @@ public class TemporadaService {
 			for(Piloto piloto : clasificacionCarrera) {
 				String sql ="SELECT puntos FROM piloto WHERE nombrePiloto = '" +piloto.getNombre() +"';"; //TODO: Mirar todos los selct y cerrar conexion
 				ResultSet res = Conexion.EjecutarSentencia(sql);
-				int puntos = 0;
+				int puntos = piloto.getPuntos();
 				try {
-					while(!res.next()) {
+					while(res.next()) {
 						puntos += res.getInt("puntos");
 					}
 				}catch(SQLException e) {
@@ -97,26 +97,24 @@ public class TemporadaService {
 				}
 				finally
 				{
-					Conexion.CerrarConexion();
+//					Conexion.CerrarConexion();
 				}
 				
-				int puntosActualizados = piloto.getPuntos() + puntos;
-				String sql1 = "UPDATE piloto SET puntos = " +puntosActualizados +" WHERE nombrePiloto = '" +piloto.getNombre() +"';";
-				Conexion.EjecutarUpdatePuntosPiloto(sql1); //Falla al realizar esta sentencia
+				String sql1 = "UPDATE piloto SET puntos = " +puntos +" WHERE nombrePiloto = '" +piloto.getNombre() +"';";
+				Conexion.EjecutarUpdatePuntosPiloto(sql1);
 			}
 		}
 		
-		ArrayList<Piloto> clasificacionTemporada = new ArrayList<Piloto>();
 		String sql2 = "SELECT * FROM piloto order by puntos DESC";
 		ResultSet res1 = Conexion.EjecutarSentencia(sql2);
 		try{
-				while(!res1.next()) {
+				while(res1.next()) {
 				String nombre = res1.getString("nombrePiloto");
 				Escuderia escuderia = new Escuderia(res1.getString("escuderia"));
 				int puntos = res1.getInt("puntos");
 				
 				Piloto piloto = new Piloto(nombre, puntos, escuderia);
-				clasificacionTemporada.add(piloto);
+				clasificacionPilotosTemporada.add(piloto);
 				}
 			}catch(SQLException ex) {
 				System.out.println(ex.getStackTrace());
@@ -124,9 +122,66 @@ public class TemporadaService {
 			}
 			finally
 			{
-				Conexion.CerrarConexion();
+//				Conexion.CerrarConexion();
 			}
-		ResultadoTemporada resultado = new ResultadoTemporada(clasificacionTemporada);
+		ResultadoTemporada resultado = new ResultadoTemporada(clasificacionPilotosTemporada);
 		return resultado;
+	}
+
+	public ArrayList<Escuderia> verResultadosEscuderias() {
+		ArrayList<Piloto> pilotosEscuderias = new ArrayList<Piloto>();
+		String sql = "SELECT * FROM piloto";
+		ResultSet res = Conexion.EjecutarSentencia(sql);
+		try {
+			while(res.next()) {
+				int puntos = res.getInt("puntos");
+				String nombreEscuderia = res.getString("escuderia");
+				Escuderia escuderia = new Escuderia(nombreEscuderia);
+				Piloto piloto = new Piloto(escuderia, puntos);
+				pilotosEscuderias.add(piloto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		for(Piloto piloto : pilotosEscuderias) {
+			String sql1 = "UPDATE escuderia SET puntosEscuderia = puntosEscuderia +" +piloto.getPuntos() +" WHERE nombreEscuderia = '" +piloto.getEscuderia().getNombreEscuderia() +"';";
+			Conexion.EjecutarUpdatePuntosEscuderia(sql1);
+		}
+		ArrayList<Escuderia> escuderias = new ArrayList<Escuderia>();
+		
+		String sql2 = "SELECT * FROM escuderia ORDER BY puntosEscuderia DESC";
+		ResultSet res1 = Conexion.EjecutarSentencia(sql2);
+		try {
+			while(res1.next()) {
+				int puntos = res1.getInt("puntosEscuderia");
+				String nombre = res1.getString("nombreEscuderia");
+				String motor = res1.getString("motor");
+				Escuderia escuderia = new Escuderia(nombre, motor, puntos);
+				escuderias.add(escuderia);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return escuderias;
+	}
+
+	public ArrayList<Piloto> verClasificacionPilotos() {
+		ArrayList<Piloto> clasificacion = new ArrayList<Piloto>();
+		String sql = "SELECT * FROM piloto ORDER BY puntos DESC";
+		ResultSet res = Conexion.EjecutarSentencia(sql);
+		try {
+			while(res.next()) {
+				int puntos = res.getInt("puntos");
+				String nombreEscuderia = res.getString("escuderia");
+				String nombrePiloto = res.getString("nombrePiloto");
+				Escuderia escuderia = new Escuderia(nombreEscuderia);
+				Piloto piloto = new Piloto(nombrePiloto, puntos, escuderia);
+				clasificacion.add(piloto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return clasificacion;
 	}
 }

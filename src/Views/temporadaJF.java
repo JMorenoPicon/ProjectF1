@@ -4,6 +4,7 @@ package Views;
 import java.awt.Image;
 
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -31,17 +32,19 @@ import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.border.CompoundBorder;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
 
 public class temporadaJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField mensajeAviso;
 	private JTable table;
 	private JTextField textField_1;
 
@@ -82,14 +85,91 @@ public class temporadaJF extends JFrame {
 		ImageIcon img = new ImageIcon(icon.getImage().getScaledInstance(imagenFondoLbl.getWidth(), imagenFondoLbl.getHeight(), Image.SCALE_SMOOTH));
 		imagenFondoLbl.setIcon(img);
 		
-		mensajeAviso = new JTextField();
-		mensajeAviso.setEditable(false);
-		mensajeAviso.setBackground(new Color(255, 255, 255));
-		mensajeAviso.setHorizontalAlignment(SwingConstants.CENTER);
-		mensajeAviso.setText("Va a iniciar una nueva temporada de la Formula 1");
-		mensajeAviso.setBounds(10, 25, 634, 20);
-		mensajeAviso.setColumns(10);
-		contentPane.add(mensajeAviso);
+		table = new JTable();
+		table.setBounds(151, 123, 1, 1);
+		table.setVisible(false);
+		contentPane.add(table);
+		
+		JComboBox<Circuito> comboBox = new JComboBox<Circuito>();
+		comboBox.setBounds(172, 11, 211, 22);
+		comboBox.setVisible(false);
+		contentPane.add(comboBox);
+		
+		VerCircuitosController verCircuitos = new VerCircuitosController();
+		ArrayList<String> arrayCircuitosLista = verCircuitos.verNombreCircuitos();
+		comboBox.setModel(new DefaultComboBoxModel(arrayCircuitosLista.toArray()));
+		
+		
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(10, 121, 634, 273);
+		scrollPane.setVisible(false);
+		contentPane.add(scrollPane);
+		
+		JButton btnNewButton_2 = new JButton("Ver Carrera");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new verCarreraJF().setVisible(true);
+			}
+		});
+		btnNewButton_2.setBounds(393, 11, 152, 23);
+		btnNewButton_2.setVisible(false);
+		contentPane.add(btnNewButton_2);
+		
+		JButton btnNewButton_1 = new JButton("Escuderias");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TemporadaController temporadaController = new TemporadaController();
+				temporadaController.resetPuntosEscuderias();
+				ArrayList<Escuderia> escuderias = new ArrayList<Escuderia>();
+				escuderias = temporadaController.verResultadosEscuderias();
+				
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.addColumn("Posición");
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Motor");
+				modelo.addColumn("Puntos");
+				int posicion = 0;
+				for(var escuderia : escuderias){
+					posicion += 1;
+					Object[] fila = { posicion, escuderia.getNombreEscuderia(), escuderia.getNombreMotor(), escuderia.getPuntos()};
+					modelo.addRow(fila);
+				}
+				table.setModel(modelo);
+				
+			}
+		});
+		
+		JButton btnNewButton = new JButton("Pilotos");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TemporadaController temporadaController = new TemporadaController();
+				ArrayList<Piloto> clasificacionPilotos = new ArrayList<Piloto>();
+				clasificacionPilotos = temporadaController.verClasificacionPilotos();
+				
+				DefaultTableModel modelo = new DefaultTableModel();
+				modelo.addColumn("Posición");
+				modelo.addColumn("Nombre");
+				modelo.addColumn("Escuderia");
+				modelo.addColumn("Puntos");
+				int posicion = 0;
+				
+				for(var piloto:clasificacionPilotos)
+				{
+					posicion += 1;
+					Object[] fila = { posicion, piloto.getNombre(), piloto.getEscuderia().getNombreEscuderia(), piloto.getPuntos()};
+					modelo.addRow(fila);
+				}
+				table.setModel(modelo);
+			}
+		});
+		btnNewButton.setBounds(10, 45, 152, 23);
+		contentPane.add(btnNewButton);
+		btnNewButton.setVisible(false);
+		
+		
+		btnNewButton_1.setBounds(10, 79, 152, 23);
+		btnNewButton_1.setVisible(false);
+		contentPane.add(btnNewButton_1);
 		
 		textField = new JTextField();
 		textField = new JTextField();
@@ -102,6 +182,15 @@ public class temporadaJF extends JFrame {
 		JButton BotonContinuar = new JButton("Continuar");
 		BotonContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				BotonContinuar.setText("Nueva Temporada");
+				btnNewButton.setVisible(true);
+				btnNewButton_1.setVisible(true);
+				btnNewButton_2.setVisible(true);
+				table.setVisible(true);
+				scrollPane.setVisible(true);
+				comboBox.setVisible(true);
+				
 				
 				TemporadaController temporadaController = new TemporadaController();
 				temporadaController.resetPuntosPilotos();
@@ -126,19 +215,6 @@ public class temporadaJF extends JFrame {
 				ResultadoTemporada resultado = temporadaController.simularTemporada(temporada);
 				
 				//resultado lo meto en la tabla y que aparezca en la vista
-				textField_1 = new JTextField();
-				textField_1.setBounds(10, 78, 634, 37);
-				textField_1.setEditable(false);
-				contentPane.add(textField_1);
-				textField_1.setColumns(10);
-				
-				textField_1.setText("Temporada simulada. Resultados:");
-				
-				table = new JTable();
-				table.setBounds(151, 123, 1, 1);
-				contentPane.add(table);
-				
-				
 				DefaultTableModel modelo = new DefaultTableModel();
 				modelo.addColumn("Posición");
 				modelo.addColumn("Nombre");
@@ -153,14 +229,10 @@ public class temporadaJF extends JFrame {
 					modelo.addRow(fila);
 				}
 				table.setModel(modelo);
-				
-				JScrollPane scrollPane = new JScrollPane(table);
-				scrollPane.setBounds(10, 121, 634, 273);
-				contentPane.add(scrollPane);
 			}
 		});
 		BotonContinuar.setBackground(SystemColor.activeCaption);
-		BotonContinuar.setBounds(181, 350, 89, 23);
+		BotonContinuar.setBounds(10, 11, 152, 23);
 		contentPane.add(BotonContinuar);
 		
 		JButton BotonAtras = new JButton("Atras");
@@ -171,7 +243,7 @@ public class temporadaJF extends JFrame {
 			}
 		});
 		BotonAtras.setBackground(SystemColor.activeCaption);
-		BotonAtras.setBounds(380, 350, 89, 23);
+		BotonAtras.setBounds(555, 11, 89, 23);
 		contentPane.add(BotonAtras);
 		
 		contentPane.add(imagenFondoLbl);

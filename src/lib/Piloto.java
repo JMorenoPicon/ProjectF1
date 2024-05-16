@@ -33,6 +33,11 @@ public class Piloto {
     public Piloto(String nombre) {
     	this.nombre = nombre;
     }
+    
+    public Piloto(Escuderia escuderia, int puntos) {
+    	this.escuderia = escuderia;
+    	this.puntos = puntos;
+    }
 
     public String getNombre() {
         return nombre;

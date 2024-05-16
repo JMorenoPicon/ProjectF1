@@ -5,7 +5,7 @@ public class Escuderia {
 	    private String nombreMotor;
 	    private int puntos;
 
-	    public Escuderia(String nombreEscuderia, String nombreMotor, int puntos, String nacionalidadEscuderia) {
+	    public Escuderia(String nombreEscuderia, String nombreMotor, int puntos) {
 	        this.nombreEscuderia = nombreEscuderia;
 	        this.nombreMotor = nombreMotor;
 	        this.puntos = puntos;

@@ -16,6 +16,7 @@ public class CarreraService {
 
 	public ArrayList<Piloto> obtenerPilotos() {
 		try {
+//			Conexion.Conectar();
 			String sql = "SELECT * FROM piloto;";
 			ResultSet res = Conexion.EjecutarSentencia(sql);
 			ArrayList<Piloto> listaPilotos = new ArrayList<Piloto>();
@@ -34,6 +35,8 @@ public class CarreraService {
 			System.out.println("No funciona carreraService.obtenerPilotos");
 			ArrayList<Piloto> listaVacia = new ArrayList<Piloto>();
 			return listaVacia;
+		}finally {
+//			Conexion.CerrarConexion();
 		}
 		
 	}

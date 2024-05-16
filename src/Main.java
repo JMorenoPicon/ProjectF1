@@ -5,7 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-//		Conexion.Conectar();
+		Conexion.Conectar();
 		
 		new pantallaInicioJF().setVisible(true);
 	}
