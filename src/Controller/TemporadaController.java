@@ -25,6 +25,7 @@ public class TemporadaController {
 	}
 
 	public ResultadoTemporada simularTemporada(Temporada temporada) {
+		
 		return temporadaService.simularTemporada(temporada);
 		
 	}

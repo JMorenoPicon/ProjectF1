@@ -122,10 +122,10 @@ public class TemporadaService {
 				System.out.println(ex.getStackTrace());
 				JOptionPane.showMessageDialog(null, "Fallo al coger los pilotos de la base de datos");
 			}
-			finally
-			{
-//				Conexion.CerrarConexion();
-			}
+//			finally
+//			{
+////				Conexion.CerrarConexion();
+//			}
 		ResultadoTemporada resultado = new ResultadoTemporada(clasificacionPilotosTemporada);
 		return resultado;
 	}
