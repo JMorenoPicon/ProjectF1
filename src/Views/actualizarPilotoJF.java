@@ -27,6 +27,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class actualizarPilotoJF extends JFrame {
 
@@ -98,6 +102,20 @@ public class actualizarPilotoJF extends JFrame {
 		contentPane.add(comboBox_1);
 		
 		txtDorsal = new JTextField();
+		txtDorsal.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtDorsal.getText().length() >= 2) {
+					e.consume();
+				}
+			}
+		});
+		txtDorsal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtDorsal.setText("");
+			}
+		});
 		txtDorsal.setToolTipText("Dorsal");
 		txtDorsal.setHorizontalAlignment(SwingConstants.CENTER);
 		txtDorsal.setBounds(320, 79, 86, 20);
@@ -105,6 +123,20 @@ public class actualizarPilotoJF extends JFrame {
 		txtDorsal.setColumns(10);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNombre.getText().length() >= 30) {
+					e.consume();
+				}
+			}
+		});
+		txtNombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNombre.setText("");
+			}
+		});
 		txtNombre.setToolTipText("Nombre");
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNombre.setBounds(320, 38, 86, 20);

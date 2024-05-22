@@ -24,6 +24,12 @@ import java.awt.event.ActionEvent;
 import lib.*;
 import Controller.*;
 import javax.swing.JTextPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class crearPilotoJF extends JFrame {
 
@@ -112,11 +118,41 @@ public class crearPilotoJF extends JFrame {
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		txtNombre = new JTextField();
+		txtNombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNombre.setText("");
+			}
+		});
+		txtNombre.setText("Nombre");
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNombre.getText().length() >= 30){
+					e.consume();//Limitar caracteres
+				}
+			}
+		});
 		txtNombre.setToolTipText("Nombre");
 		panel.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		txtDorsal = new JTextField();
+		txtDorsal.setText("Dorsal");
+		txtDorsal.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtDorsal.setText("");
+			}
+		});
+		txtDorsal.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtDorsal.getText().length() >= 2) {
+					e.consume();
+				}
+			}
+		});
 		txtDorsal.setToolTipText("Dorsal");
 		panel.add(txtDorsal);
 		txtDorsal.setColumns(10);

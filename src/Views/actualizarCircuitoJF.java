@@ -23,6 +23,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class actualizarCircuitoJF extends JFrame {
 
@@ -66,18 +70,60 @@ public class actualizarCircuitoJF extends JFrame {
 		contentPane.setLayout(null);
 		
 		txtNVueltas = new JTextField();
+		txtNVueltas.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNVueltas.getText().length() >= 2) {
+					e.consume();
+				}
+			}
+		});
+		txtNVueltas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNVueltas.setText("");
+			}
+		});
 		txtNVueltas.setToolTipText("Nº Vueltas");
 		txtNVueltas.setBounds(512, 42, 86, 20);
 		contentPane.add(txtNVueltas);
 		txtNVueltas.setColumns(10);
 		
 		txtPais = new JTextField();
+		txtPais.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtPais.getText().length() >= 20) {
+					e.consume();
+				}
+			}
+		});
+		txtPais.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtPais.setText("");
+			}
+		});
 		txtPais.setToolTipText("Pais");
 		txtPais.setBounds(416, 42, 86, 20);
 		contentPane.add(txtPais);
 		txtPais.setColumns(10);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNombre.getText().length() >= 50) {
+					e.consume();
+				}
+			}
+		});
+		txtNombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNombre.setText("");
+			}
+		});
 		txtNombre.setToolTipText("Nombre");
 		txtNombre.setBounds(320, 42, 86, 20);
 		contentPane.add(txtNombre);

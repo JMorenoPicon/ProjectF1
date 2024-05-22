@@ -25,6 +25,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class actualizarEscuderiaJF extends JFrame {
 
@@ -76,6 +80,20 @@ public class actualizarEscuderiaJF extends JFrame {
 		}
 		
 		txtMotor = new JTextField();
+		txtMotor.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtMotor.getText().length() >= 30) {
+					e.consume();
+				}
+			}
+		});
+		txtMotor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtMotor.setText("");
+			}
+		});
 		txtMotor.setToolTipText("Motor");
 		txtMotor.setHorizontalAlignment(SwingConstants.CENTER);
 		txtMotor.setBounds(208, 102, 86, 20);
@@ -83,6 +101,20 @@ public class actualizarEscuderiaJF extends JFrame {
 		txtMotor.setColumns(10);
 		
 		txtNombre = new JTextField();
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNombre.getText().length() >= 50) {
+					e.consume();
+				}
+			}
+		});
+		txtNombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNombre.setText("");
+			}
+		});
 		txtNombre.setToolTipText("Nombre");
 		txtNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNombre.setBounds(51, 102, 86, 20);

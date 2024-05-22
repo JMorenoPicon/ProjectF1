@@ -21,12 +21,16 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class crearCircuitoJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtNombre;
 	private JTextField txtPas;
 	private JTextField txtNVueltas;
 
@@ -64,7 +68,7 @@ public class crearCircuitoJF extends JFrame {
 		JButton btnNewButton = new JButton("Confirmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombre = textField.getText();
+				String nombre = txtNombre.getText();
 				String pais = txtPas.getText();
 				String vueltasString = txtNVueltas.getText();
 				
@@ -103,17 +107,62 @@ public class crearCircuitoJF extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		textField = new JTextField();
-		textField.setToolTipText("Nombre Circuito");
-		textField.setColumns(10);
-		panel.add(textField);
+		txtNombre = new JTextField();
+		txtNombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNombre.setText("");
+			}
+		});
+		txtNombre.setText("Nombre");
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNombre.getText().length() >= 50){
+					e.consume();//Limitar caracteres
+				}
+			}
+		});
+		txtNombre.setToolTipText("Nombre Circuito");
+		txtNombre.setColumns(10);
+		panel.add(txtNombre);
 		
 		txtPas = new JTextField();
+		txtPas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtPas.setText("");
+			}
+		});
+		txtPas.setText("Pais");
+		txtPas.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtPas.getText().length() >= 20){
+					e.consume();//Limitar caracteres
+				}
+			}
+		});
 		txtPas.setToolTipText("Pais");
 		txtPas.setColumns(10);
 		panel.add(txtPas);
 		
 		txtNVueltas = new JTextField();
+		txtNVueltas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNVueltas.setText("");
+			}
+		});
+		txtNVueltas.setText("Vueltas");
+		txtNVueltas.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNVueltas.getText().length() >= 2){
+					e.consume();//Limitar caracteres
+				}
+			}
+		});
 		txtNVueltas.setToolTipText("Nº Vueltas");
 		panel.add(txtNVueltas);
 		txtNVueltas.setColumns(10);

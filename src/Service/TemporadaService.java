@@ -86,7 +86,7 @@ public class TemporadaService {
 			
 			//Insertar puntos de pilotos en BBDD
 			for(Piloto piloto : clasificacionCarrera) {
-				String sql ="SELECT puntos FROM piloto WHERE nombrePiloto = '" +piloto.getNombre() +"';"; //TODO: Mirar todos los selct y cerrar conexion
+				String sql ="SELECT puntos FROM piloto WHERE nombrePiloto = '" +piloto.getNombre() +"';"; 
 				ResultSet res = Conexion.EjecutarSentencia(sql);
 				int puntos = piloto.getPuntos();
 				try {

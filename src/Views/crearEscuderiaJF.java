@@ -20,12 +20,16 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class crearEscuderiaJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtNombre;
 	private JTextField txtMotor;
 
 	/**
@@ -72,7 +76,7 @@ public class crearEscuderiaJF extends JFrame {
 		JButton btnNewButton = new JButton("Confirmar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String nombreEscuderia = textField.getText();
+				String nombreEscuderia = txtNombre.getText();
 				String motor = txtMotor.getText();
 				
 				CrearEscuderiaController crearEscuderia = new CrearEscuderiaController();
@@ -95,12 +99,42 @@ public class crearEscuderiaJF extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
-		textField = new JTextField();
-		textField.setToolTipText("Nombre Escuderia");
-		textField.setColumns(10);
-		panel.add(textField);
+		txtNombre = new JTextField();
+		txtNombre.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtNombre.setText("");
+			}
+		});
+		txtNombre.setText("Nombre");
+		txtNombre.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtNombre.getText().length() >= 50) {
+					e.consume();
+				}
+			}
+		});
+		txtNombre.setToolTipText("Nombre Escuderia");
+		txtNombre.setColumns(10);
+		panel.add(txtNombre);
 		
 		txtMotor = new JTextField();
+		txtMotor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				txtMotor.setText("");
+			}
+		});
+		txtMotor.setText("Motor");
+		txtMotor.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(txtMotor.getText().length() >= 30) {
+					e.consume();
+				}
+			}
+		});
 		txtMotor.setToolTipText("Motor");
 		txtMotor.setColumns(10);
 		panel.add(txtMotor);
