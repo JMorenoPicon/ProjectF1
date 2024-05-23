@@ -24,6 +24,7 @@ import lib.ResultadoTemporada;
 import lib.Temporada;
 
 public class TemporadaService {
+	
 	public boolean checkResetPilotos() {
 		String sql = ("UPDATE piloto SET puntos = 0;");
 		if(Conexion.EjecutarResetPilotos(sql)) {

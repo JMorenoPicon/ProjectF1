@@ -40,22 +40,9 @@ public class actualizarPilotoJF extends JFrame {
 	private JTextField txtEditeLosCampos;
 	private JTextField txtNombre;
 	private JTextField txtDorsal;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					actualizarPilotoJF frame = new actualizarPilotoJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerPilotosController verPilotos = new VerPilotosController();
+	VerEscuderiasController verEscuderias = new VerEscuderiasController();
+	CrearPilotoController actualizarPiloto = new CrearPilotoController();
 
 	/**
 	 * Create the frame.
@@ -82,7 +69,6 @@ public class actualizarPilotoJF extends JFrame {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		
-		VerPilotosController verPilotos = new VerPilotosController();
 		ArrayList<String> arrayPilotosLista = verPilotos.verNombrePilotos();
 		if(arrayPilotosLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay pilotos", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -91,7 +77,6 @@ public class actualizarPilotoJF extends JFrame {
 		}
 		
 		JComboBox<String> comboBox_1 = new JComboBox<String>();
-		VerEscuderiasController verEscuderias = new VerEscuderiasController();
 		ArrayList<String> arrayEscuderiasLista = verEscuderias.verNombreEscuderias();
 		if(arrayEscuderiasLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay escuderias, cree al menos una escuderia", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -170,7 +155,6 @@ public class actualizarPilotoJF extends JFrame {
 				String dorsal = txtDorsal.getText();
 				Integer dorsalNumero = null;
 				
-				CrearPilotoController actualizarPiloto = new CrearPilotoController();
 				boolean res = actualizarPiloto.checkDorsal(dorsal); //LLamo a otro controlador porque la funcion que quiero comprobar es la misma
 				if(res) {
 					dorsalNumero = Integer.parseInt(dorsal);

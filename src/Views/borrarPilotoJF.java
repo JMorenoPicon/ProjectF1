@@ -33,22 +33,7 @@ public class borrarPilotoJF extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSeleccioneElPiloto;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					borrarPilotoJF frame = new borrarPilotoJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerPilotosController verPilotos = new VerPilotosController();
 
 	/**
 	 * Create the frame.
@@ -82,7 +67,6 @@ public class borrarPilotoJF extends JFrame {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		
-		VerPilotosController verPilotos = new VerPilotosController();
 		ArrayList<String> arrayPilotosLista = verPilotos.verNombrePilotos();
 		if(arrayPilotosLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay pilotos", "Advertencia", JOptionPane.WARNING_MESSAGE);

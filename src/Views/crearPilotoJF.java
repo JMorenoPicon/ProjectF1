@@ -39,22 +39,7 @@ public class crearPilotoJF extends JFrame {
 	private JTextField txtDorsal;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					crearPiloto frame = new crearPiloto();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	CrearPilotoController CrearPiloto = new CrearPilotoController();
 
 	/**
 	 * Create the frame.
@@ -95,7 +80,6 @@ public class crearPilotoJF extends JFrame {
 				String dorsal = txtDorsal.getText();
 				Integer dorsalNumero = null;
 				
-				CrearPilotoController CrearPiloto = new CrearPilotoController();
 				boolean res = CrearPiloto.checkDorsal(dorsal);
 				if(res == true) {
 					dorsalNumero = Integer.parseInt(dorsal);
