@@ -1,9 +1,7 @@
 package Views;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -11,42 +9,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
 import Controller.VerPilotosController;
 import lib.Piloto;
-
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
-import javax.swing.UIManager;
-import javax.swing.AbstractListModel;
-import javax.swing.JTextPane;
 
 public class verPilotosJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					verPilotosJF frame = new verPilotosJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerPilotosController verPilotos = new VerPilotosController();
 
 	/**
 	 * Create the frame.
@@ -76,8 +52,6 @@ public class verPilotosJF extends JFrame {
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				VerPilotosController verPilotos = new VerPilotosController();
 				ArrayList<Piloto> listaPilotos = new ArrayList<Piloto>();
 				listaPilotos = verPilotos.verAllPilotos();
 				

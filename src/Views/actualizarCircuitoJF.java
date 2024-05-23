@@ -37,22 +37,7 @@ public class actualizarCircuitoJF extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtPais;
 	private JTextField txtNVueltas;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					actualizarCircuitoJF frame = new actualizarCircuitoJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerCircuitosController verCircuitos = new VerCircuitosController();
 
 	/**
 	 * Create the frame.
@@ -139,7 +124,6 @@ public class actualizarCircuitoJF extends JFrame {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		
-		VerCircuitosController verCircuitos = new VerCircuitosController();
 		ArrayList<String> arrayCircuitosLista = verCircuitos.verNombreCircuitos();
 		if(arrayCircuitosLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay circuitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -189,9 +173,7 @@ public class actualizarCircuitoJF extends JFrame {
 						JOptionPane.showMessageDialog(null, "Circuito actualizado");
 					new pantallaInicioJF().setVisible(true);
 					actualizarCircuitoJF.this.dispose();
-				}
-				
-				//Me falta por controlar el que no se introduzca un nombre en el cuadro de texto y se deje vacio. En crear circuito creo que tambien me pasa
+					}
 				}else {
 					JOptionPane.showMessageDialog(null, "Introduzca un numero de vueltas válido", "Advertencia", JOptionPane.WARNING_MESSAGE);
 				}

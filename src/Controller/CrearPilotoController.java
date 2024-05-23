@@ -4,8 +4,6 @@ import Service.*;
 
 public class CrearPilotoController {
 	
-	/*Codigo para crear un piloto*/
-	
 	private CrearPilotoService crearPilotoService;
 	
 	public CrearPilotoController() {

@@ -1,6 +1,5 @@
 package Views;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -20,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -33,22 +31,7 @@ public class crearCircuitoJF extends JFrame {
 	private JTextField txtNombre;
 	private JTextField txtPas;
 	private JTextField txtNVueltas;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					crearCircuitoJF frame = new crearCircuitoJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	CrearCircuitoController crearCircuito = new CrearCircuitoController();
 
 	/**
 	 * Create the frame.
@@ -72,7 +55,6 @@ public class crearCircuitoJF extends JFrame {
 				String pais = txtPas.getText();
 				String vueltasString = txtNVueltas.getText();
 				
-				CrearCircuitoController crearCircuito = new CrearCircuitoController();
 					if(crearCircuito.checkVueltas(vueltasString)) {
 						int vueltas = Integer.parseInt(txtNVueltas.getText());
 						Circuito circuito = new Circuito(nombre, pais, vueltas);

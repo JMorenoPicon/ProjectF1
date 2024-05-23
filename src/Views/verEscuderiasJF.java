@@ -1,23 +1,16 @@
 package Views;
 
-import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
 import Controller.VerEscuderiasController;
-import Controller.VerPilotosController;
 import lib.Escuderia;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -29,22 +22,7 @@ public class verEscuderiasJF extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					verEscuderias frame = new verEscuderias();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerEscuderiasController verEscuderias = new VerEscuderiasController();
 
 	/**
 	 * Create the frame.
@@ -72,8 +50,6 @@ public class verEscuderiasJF extends JFrame {
 		JButton btnNewButton_1 = new JButton("Ver Escuderias");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				VerEscuderiasController verEscuderias = new VerEscuderiasController();
 				ArrayList<Escuderia> listaEscuderias = new ArrayList<Escuderia>();
 				listaEscuderias = verEscuderias.verAllEscuderias();
 				

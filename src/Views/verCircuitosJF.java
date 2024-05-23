@@ -1,22 +1,15 @@
 package Views;
 
-import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
 import Controller.VerCircuitosController;
-import Controller.VerPilotosController;
 import lib.Circuito;
-
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -29,22 +22,7 @@ public class verCircuitosJF extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					verCircuitosJf frame = new verCircuitosJf();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerCircuitosController verCircuitos = new VerCircuitosController();
 
 	/**
 	 * Create the frame.
@@ -72,8 +50,6 @@ public class verCircuitosJF extends JFrame {
 		JButton btnNewButton_1 = new JButton("Ver Circuitos");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				VerCircuitosController verCircuitos = new VerCircuitosController();
 				ArrayList<Circuito> listaCircuitos = new ArrayList<Circuito>();
 				listaCircuitos = verCircuitos.verAllCircuitos();
 				

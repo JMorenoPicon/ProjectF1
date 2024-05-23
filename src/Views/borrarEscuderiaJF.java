@@ -1,7 +1,5 @@
 package Views;
 
-import java.awt.EventQueue;
-
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -19,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Choice;
 import java.awt.Button;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -31,22 +28,7 @@ public class borrarEscuderiaJF extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSeleccioneLaEscudera;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					borrarEscuderiaJF frame = new borrarEscuderiaJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerEscuderiasController verEscuderias = new VerEscuderiasController();
 
 	/**
 	 * Create the frame.
@@ -72,8 +54,7 @@ public class borrarEscuderiaJF extends JFrame {
 		});
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
-		
-		VerEscuderiasController verEscuderias = new VerEscuderiasController();
+
 		ArrayList<String> arrayEscuderiasLista = verEscuderias.verNombreEscuderias();
 		if(arrayEscuderiasLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay escuderias", "Advertencia", JOptionPane.WARNING_MESSAGE);

@@ -23,10 +23,7 @@ public class VerPilotosService {
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<String> arrayVacia = new ArrayList<String>();
 			return arrayVacia;
-		}finally {
-//			Conexion.CerrarConexion();
 		}
-		
 	}
 	
 	public ArrayList<String> verDatosPiloto(Piloto piloto){
@@ -45,8 +42,6 @@ public class VerPilotosService {
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<String> arrayVacia = new ArrayList<String>();
 			return arrayVacia;
-		}finally {
-//			Conexion.CerrarConexion();
 		}
 	}
 	
@@ -68,8 +63,6 @@ public class VerPilotosService {
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<Piloto> arrayVacia = new ArrayList<Piloto>();
 			return arrayVacia;
-		}finally {
-//			Conexion.CerrarConexion();
 		}
 	}
 
@@ -91,8 +84,6 @@ public class VerPilotosService {
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<Piloto> arrayVacia = new ArrayList<Piloto>();
 			return arrayVacia;
-		}finally {
-//			Conexion.CerrarConexion();
 		}
 	}
 }

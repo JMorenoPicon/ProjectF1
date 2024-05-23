@@ -4,8 +4,6 @@ import lib.*;
 
 public class BorrarPilotoController {
 	
-	/*Codigo para borrar un piloto*/
-	
 	private BorrarPilotoService borrarPilotoService;
 	
 	public BorrarPilotoController() {

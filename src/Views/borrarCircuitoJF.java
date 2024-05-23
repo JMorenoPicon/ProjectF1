@@ -1,8 +1,6 @@
 package Views;
 
 import java.awt.Button;
-import java.awt.Choice;
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -30,22 +28,7 @@ public class borrarCircuitoJF extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtSeleccioneElCircuito;
-
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					borrarCircuitoJF frame = new borrarCircuitoJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerCircuitosController verCircuitos = new VerCircuitosController();
 
 	/**
 	 * Create the frame.
@@ -73,7 +56,6 @@ public class borrarCircuitoJF extends JFrame {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		
-		VerCircuitosController verCircuitos = new VerCircuitosController();
 		ArrayList<String> arrayCircuitosLista = verCircuitos.verNombreCircuitos();
 		if(arrayCircuitosLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay circuitos", "Advertencia", JOptionPane.WARNING_MESSAGE);

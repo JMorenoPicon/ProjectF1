@@ -7,8 +7,6 @@ import lib.Escuderia;
 
 public class VerEscuderiasController {
 	
-	/*Codigo para ver las escuderias*/
-	
 	private VerEscuderiasService verEscuderiasNombreService;
 	
 	public VerEscuderiasController() {

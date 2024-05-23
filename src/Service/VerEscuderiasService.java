@@ -23,8 +23,6 @@ public class VerEscuderiasService {
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<String> arrayVacia = new ArrayList<String>();
 			return arrayVacia;
-		}finally {
-//			Conexion.CerrarConexion();
 		}
 	}
 	
@@ -44,8 +42,6 @@ public class VerEscuderiasService {
 			JOptionPane.showMessageDialog(null, e.getStackTrace());
 			ArrayList<Escuderia> arrayVacia = new ArrayList<Escuderia>();
 			return arrayVacia;
-		}finally {
-//			Conexion.CerrarConexion();
 		}
 	}
 }

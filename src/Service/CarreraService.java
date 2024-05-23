@@ -16,7 +16,6 @@ public class CarreraService {
 
 	public ArrayList<Piloto> obtenerPilotos() {
 		try {
-//			Conexion.Conectar();
 			String sql = "SELECT * FROM piloto WHERE escuderia is NOT NULL;";
 			ResultSet res = Conexion.EjecutarSentencia(sql);
 			ArrayList<Piloto> listaPilotos = new ArrayList<Piloto>();
@@ -35,10 +34,7 @@ public class CarreraService {
 			System.out.println("No funciona carreraService.obtenerPilotos");
 			ArrayList<Piloto> listaVacia = new ArrayList<Piloto>();
 			return listaVacia;
-		}finally {
-//			Conexion.CerrarConexion();
 		}
-		
 	}
 
 	public ResultadoCarrera correr(ArrayList<Piloto> pilotos, Circuito circuito) {
@@ -72,7 +68,6 @@ public class CarreraService {
 			}
 		}
 					
-		
 		int posicionPilotoVueltaRapida = (int) (Math.random()*(10 - 1) + 1);
 		int puntos = pilotos.get(posicionPilotoVueltaRapida).getPuntos();
 		pilotos.get(posicionPilotoVueltaRapida).setPuntos(puntos += 1);

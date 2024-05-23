@@ -1,9 +1,7 @@
 package Views;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -11,17 +9,14 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Controller.ActualizarPilotoController;
 import Controller.CrearPilotoController;
 import Controller.VerEscuderiasController;
 import Controller.VerPilotosController;
 import lib.Escuderia;
 import lib.Piloto;
-
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Choice;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -164,8 +159,6 @@ public class actualizarPilotoJF extends JFrame {
 					new pantallaInicioJF().setVisible(true);
 					actualizarPilotoJF.this.dispose();
 				}
-				
-				//Me falta por controlar el que no se introduzca un nombre en el cuadro de texto y se deje vacio. En crear piloto creo que tambien me pasa
 			}
 		});
 		btnNewButton.setBounds(151, 343, 100, 23);

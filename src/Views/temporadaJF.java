@@ -1,16 +1,12 @@
 package Views;
 
-//import java.awt.EventQueue;
 import java.awt.Image;
-
-import javax.swing.AbstractListModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
 import Controller.TemporadaController;
 import Controller.VerCircuitosController;
 import Controller.VerEscuderiasController;
@@ -20,22 +16,15 @@ import lib.Escuderia;
 import lib.Piloto;
 import lib.ResultadoTemporada;
 import lib.Temporada;
-
 import javax.swing.JLabel;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-
-import java.awt.Color;
-import javax.swing.border.CompoundBorder;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
@@ -46,23 +35,10 @@ public class temporadaJF extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTable table;
-	private JTextField textField_1;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					temporadaJF frame = new temporadaJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerCircuitosController verCircuitos = new VerCircuitosController();
+	TemporadaController temporadaController = new TemporadaController();
+	VerPilotosController verPilotos = new VerPilotosController();
+	VerEscuderiasController verEscuderias = new VerEscuderiasController();
 
 	/**
 	 * Create the frame.
@@ -95,10 +71,8 @@ public class temporadaJF extends JFrame {
 		comboBox.setVisible(false);
 		contentPane.add(comboBox);
 		
-		VerCircuitosController verCircuitos = new VerCircuitosController();
 		ArrayList<String> arrayCircuitosLista = verCircuitos.verNombreCircuitos();
 		comboBox.setModel(new DefaultComboBoxModel(arrayCircuitosLista.toArray()));
-		
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 121, 634, 273);
@@ -108,8 +82,6 @@ public class temporadaJF extends JFrame {
 		JButton btnNewButton_2 = new JButton("Ver Carrera");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				TemporadaController temporadaController = new TemporadaController();
 				String item = comboBox.getSelectedItem().toString();
 				
 				ArrayList<Piloto> clasificacionCircuito = new ArrayList<Piloto>();
@@ -137,7 +109,6 @@ public class temporadaJF extends JFrame {
 		JButton btnNewButton_1 = new JButton("Escuderias");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TemporadaController temporadaController = new TemporadaController();
 				temporadaController.resetPuntosEscuderias();
 				ArrayList<Escuderia> escuderias = new ArrayList<Escuderia>();
 				escuderias = temporadaController.verResultadosEscuderias();
@@ -161,7 +132,6 @@ public class temporadaJF extends JFrame {
 		JButton btnNewButton = new JButton("Pilotos");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TemporadaController temporadaController = new TemporadaController();
 				ArrayList<Piloto> clasificacionPilotos = new ArrayList<Piloto>();
 				clasificacionPilotos = temporadaController.verClasificacionPilotos();
 				
@@ -209,9 +179,7 @@ public class temporadaJF extends JFrame {
 				table.setVisible(true);
 				scrollPane.setVisible(true);
 				comboBox.setVisible(true);
-				
-				
-				TemporadaController temporadaController = new TemporadaController();
+
 				temporadaController.resetPuntosPilotos();
 				temporadaController.resetPuntosEscuderias();
 				
@@ -219,15 +187,11 @@ public class temporadaJF extends JFrame {
 				ArrayList<Piloto> pilotos = new ArrayList<Piloto>();
 				ArrayList<Escuderia> escuderias = new ArrayList<Escuderia>();
 				
-				VerCircuitosController verCircuitos = new VerCircuitosController();
 				circuitos = verCircuitos.verAllCircuitos();
 				
-				VerPilotosController verPilotos = new VerPilotosController();
 				pilotos = verPilotos.verAllPilotosTemporada();
 				
-				VerEscuderiasController verEscuderias = new VerEscuderiasController();
 				escuderias = verEscuderias.verAllEscuderias();
-				
 				
 				Temporada temporada = new Temporada(circuitos, escuderias, pilotos);
 				

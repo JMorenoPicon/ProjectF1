@@ -1,27 +1,20 @@
 package Views;
 
-//import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import Controller.CarreraController;
 import Controller.VerCircuitosController;
-import lib.Carrera;
 import lib.Circuito;
 import lib.Piloto;
 import lib.ResultadoCarrera;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import java.awt.Color;
-import java.awt.Choice;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.DefaultComboBoxModel;
@@ -30,9 +23,7 @@ import javax.swing.JButton;
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 public class carreraSimpleJF extends JFrame {
@@ -41,24 +32,10 @@ public class carreraSimpleJF extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTable table_1;
 	private JTable table;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					carreraSimpleJF frame = new carreraSimpleJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	VerCircuitosController verCircuitos = new VerCircuitosController();
+	CarreraController carreraSimple = new CarreraController();
+	VerCircuitosController verCircuitoController = new VerCircuitosController();
 
 	/**
 	 * Create the frame.
@@ -76,7 +53,6 @@ public class carreraSimpleJF extends JFrame {
 		contentPane.setLayout(null);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
-		VerCircuitosController verCircuitos = new VerCircuitosController();
 		ArrayList<String> arrayCircuitosLista = verCircuitos.verNombreCircuitos();
 		if(arrayCircuitosLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay circuitos", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -98,10 +74,8 @@ public class carreraSimpleJF extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				CarreraController carreraSimple = new CarreraController();
 				ArrayList<Piloto> pilotos = new ArrayList<Piloto>();
 				String itemCircuito = comboBox.getSelectedItem().toString();
-				VerCircuitosController verCircuitoController = new VerCircuitosController();
 				Circuito nombreCircuito = new Circuito(itemCircuito);
 				int vueltas = verCircuitoController.verVueltasCircuito(nombreCircuito.getNombre());
 				Circuito circuito = new Circuito(itemCircuito, vueltas);

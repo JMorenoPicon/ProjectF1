@@ -1,6 +1,5 @@
 package Views;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -11,14 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Controller.ActualizarEscuderiaController;
-import Controller.CrearEscuderiaController;
 import Controller.VerEscuderiasController;
 import lib.Escuderia;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
-import java.awt.Choice;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
@@ -37,22 +34,8 @@ public class actualizarEscuderiaJF extends JFrame {
 	private JTextField txtSeleccioneLaEscudera;
 	private JTextField txtNombre;
 	private JTextField txtMotor;
+	VerEscuderiasController verEscuderias = new VerEscuderiasController();
 
-//	/**
-//	 * Launch the application.
-//	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					actualizarEscuderiaJF frame = new actualizarEscuderiaJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -71,7 +54,6 @@ public class actualizarEscuderiaJF extends JFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		
-		VerEscuderiasController verEscuderias = new VerEscuderiasController();
 		ArrayList<String> arrayEscuderiasLista = verEscuderias.verNombreEscuderias();
 		if(arrayEscuderiasLista.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "No hay escuderias", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -134,8 +116,6 @@ public class actualizarEscuderiaJF extends JFrame {
 				
 				String nombreNuevoEscuderia = txtNombre.getText();
 				String motorNuevo = txtMotor.getText();
-				
-//				CrearEscuderiaController actualizarEscuderia = new CrearEscuderiaController();//LLamo a otro controlador porque la funcion que quiero comprobar es la misma
 				Escuderia escuderia = new Escuderia(nombreNuevoEscuderia, motorNuevo);
 				new ActualizarEscuderiaController().actualizarEscuderia(escuderia, itemEscuderia);
 				new pantallaInicioJF().setVisible(true);

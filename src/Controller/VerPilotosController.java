@@ -6,8 +6,6 @@ import lib.*;
 
 public class VerPilotosController {
 	
-	/*Codigo para ver los pilotos*/
-	
 	private VerPilotosService verPilotosNombreService;
 	
 	public VerPilotosController() {

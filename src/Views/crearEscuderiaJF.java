@@ -1,6 +1,5 @@
 package Views;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -31,22 +30,7 @@ public class crearEscuderiaJF extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNombre;
 	private JTextField txtMotor;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					crearEscuderia frame = new crearEscuderia();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
+	CrearEscuderiaController crearEscuderia = new CrearEscuderiaController();
 
 	/**
 	 * Create the frame.
@@ -78,8 +62,6 @@ public class crearEscuderiaJF extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String nombreEscuderia = txtNombre.getText();
 				String motor = txtMotor.getText();
-				
-				CrearEscuderiaController crearEscuderia = new CrearEscuderiaController();
 				Escuderia escuderia = new Escuderia(nombreEscuderia, motor);
 				if(crearEscuderia.checkRegistro(escuderia)) {
 					JOptionPane.showMessageDialog(null, "Escudería creada");

@@ -1,8 +1,5 @@
 package Views;
 
-import java.awt.EventQueue;
-
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -16,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import java.awt.Choice;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
@@ -26,7 +22,6 @@ import Controller.VerPilotosController;
 import lib.Piloto;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class borrarPilotoJF extends JFrame {
 
