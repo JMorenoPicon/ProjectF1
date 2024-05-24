@@ -25,6 +25,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Cursor;
 
 public class crearPilotoJF extends JFrame {
 
@@ -59,6 +61,17 @@ public class crearPilotoJF extends JFrame {
 		ImageIcon img = new ImageIcon(icon.getImage().getScaledInstance(lblNewLabel.getWidth(), lblNewLabel.getHeight(), Image.SCALE_SMOOTH));
 		
 		btnNewButton_1 = new JButton("Cancelar");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_1.setBackground(Color.red);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_1.setBackground(new Color(240, 240, 240));
+			}
+		});
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);
@@ -69,6 +82,17 @@ public class crearPilotoJF extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton = new JButton("Continuar");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton.setBackground(Color.green);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton.setBackground(new Color(240, 240, 240));
+			}
+		});
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nombrePiloto = txtNombre.getText();

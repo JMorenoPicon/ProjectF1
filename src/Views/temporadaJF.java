@@ -1,5 +1,6 @@
 package Views;
 
+import java.awt.Color;
 import java.awt.Image;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -20,6 +21,8 @@ import javax.swing.JLabel;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import java.awt.SystemColor;
@@ -28,6 +31,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
+import java.awt.Cursor;
 
 public class temporadaJF extends JFrame {
 
@@ -67,7 +71,7 @@ public class temporadaJF extends JFrame {
 		contentPane.add(table);
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
-		comboBox.setBounds(172, 11, 211, 22);
+		comboBox.setBounds(259, 11, 211, 22);
 		comboBox.setVisible(false);
 		contentPane.add(comboBox);
 		
@@ -80,6 +84,7 @@ public class temporadaJF extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JButton btnNewButton_2 = new JButton("Ver Carrera");
+		btnNewButton_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String item = comboBox.getSelectedItem().toString();
@@ -102,11 +107,12 @@ public class temporadaJF extends JFrame {
 				
 			}
 		});
-		btnNewButton_2.setBounds(393, 11, 152, 23);
+		btnNewButton_2.setBounds(480, 11, 152, 23);
 		btnNewButton_2.setVisible(false);
 		contentPane.add(btnNewButton_2);
 		
 		JButton btnNewButton_1 = new JButton("Escuderias");
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				temporadaController.resetPuntosEscuderias();
@@ -130,6 +136,7 @@ public class temporadaJF extends JFrame {
 		});
 		
 		JButton btnNewButton = new JButton("Pilotos");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Piloto> clasificacionPilotos = new ArrayList<Piloto>();
@@ -151,12 +158,12 @@ public class temporadaJF extends JFrame {
 				table.setModel(modelo);
 			}
 		});
-		btnNewButton.setBounds(10, 45, 152, 23);
+		btnNewButton.setBounds(76, 97, 152, 23);
 		contentPane.add(btnNewButton);
 		btnNewButton.setVisible(false);
 		
 		
-		btnNewButton_1.setBounds(10, 79, 152, 23);
+		btnNewButton_1.setBounds(393, 97, 152, 23);
 		btnNewButton_1.setVisible(false);
 		contentPane.add(btnNewButton_1);
 		
@@ -169,6 +176,7 @@ public class temporadaJF extends JFrame {
 		textField.setColumns(10);
 		
 		JButton BotonContinuar = new JButton("Continuar");
+		BotonContinuar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BotonContinuar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -219,6 +227,7 @@ public class temporadaJF extends JFrame {
 		contentPane.add(BotonContinuar);
 		
 		JButton BotonAtras = new JButton("Atras");
+		BotonAtras.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BotonAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);
@@ -226,7 +235,7 @@ public class temporadaJF extends JFrame {
 			}
 		});
 		BotonAtras.setBackground(SystemColor.activeCaption);
-		BotonAtras.setBounds(555, 11, 89, 23);
+		BotonAtras.setBounds(10, 45, 152, 23);
 		contentPane.add(BotonAtras);
 		
 		contentPane.add(imagenFondoLbl);

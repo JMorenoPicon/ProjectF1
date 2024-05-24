@@ -3,6 +3,8 @@ package Views;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -25,6 +27,7 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import java.awt.Cursor;
 
 public class carreraSimpleJF extends JFrame {
 
@@ -71,6 +74,17 @@ public class carreraSimpleJF extends JFrame {
 		contentPane.add(textField);
 		
 		JButton btnNewButton = new JButton("Continuar");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton.setBackground(Color.green);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton.setBackground(new Color(240, 240, 240));
+			}
+		});
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -126,6 +140,17 @@ public class carreraSimpleJF extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Atras");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_1.setBackground(Color.red);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_1.setBackground(new Color(240, 240, 240));
+			}
+		});
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);

@@ -1,5 +1,6 @@
 package Views;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -14,8 +15,11 @@ import lib.Escuderia;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class verEscuderiasJF extends JFrame {
 
@@ -40,6 +44,17 @@ public class verEscuderiasJF extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Atrás");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton.setBackground(Color.red);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton.setBackground(new Color(240, 240, 240));
+			}
+		});
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);
@@ -48,6 +63,17 @@ public class verEscuderiasJF extends JFrame {
 		});
 		
 		JButton btnNewButton_1 = new JButton("Ver Escuderias");
+		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton_1.setBackground(Color.yellow);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnNewButton_1.setBackground(new Color(240, 240, 240));
+			}
+		});
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<Escuderia> listaEscuderias = new ArrayList<Escuderia>();

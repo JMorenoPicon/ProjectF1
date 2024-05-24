@@ -18,10 +18,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.Cursor;
 
 public class borrarEscuderiaJF extends JFrame {
 
@@ -46,6 +50,17 @@ public class borrarEscuderiaJF extends JFrame {
 		contentPane.setLayout(null);
 		
 		Button button_1 = new Button("Cancelar");
+		button_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				button_1.setBackground(Color.red);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button_1.setBackground(new Color(240, 240, 240));
+			}
+		});
+		button_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new pantallaInicioJF().setVisible(true);
@@ -67,6 +82,17 @@ public class borrarEscuderiaJF extends JFrame {
 		contentPane.add(button_1);
 		
 		Button button = new Button("Confirmar");
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				button.setBackground(Color.green);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button.setBackground(new Color(240, 240, 240));
+			}
+		});
+		button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String item;

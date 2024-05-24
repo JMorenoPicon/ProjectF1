@@ -1,8 +1,7 @@
 package Views;
 
-//import java.awt.EventQueue;
-import java.awt.Image;
 
+import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,27 +14,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.SystemColor;
+import java.awt.Cursor;
 
 public class pantallaInicioJF extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					pantallaInicioJF frame = new pantallaInicioJF();
-//					frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -52,12 +36,15 @@ public class pantallaInicioJF extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("Opciones");
+		mnNewMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		menuBar.add(mnNewMenu);
 		
 		JMenu OpcionesPilotos = new JMenu("Opciones de Piloto");
+		OpcionesPilotos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		mnNewMenu.add(OpcionesPilotos);
 		
 		JMenuItem CrearPiloto = new JMenuItem("Crear piloto");
+		CrearPiloto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		CrearPiloto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new crearPilotoJF().setVisible(true);
@@ -67,6 +54,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesPilotos.add(CrearPiloto);
 		
 		JMenuItem BorrarPiloto = new JMenuItem("Borrar piloto");
+		BorrarPiloto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BorrarPiloto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new borrarPilotoJF().setVisible(true);
@@ -76,6 +64,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesPilotos.add(BorrarPiloto);
 		
 		JMenuItem ActualizarPiloto = new JMenuItem("Actualizar piloto");
+		ActualizarPiloto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ActualizarPiloto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new actualizarPilotoJF().setVisible(true);
@@ -85,6 +74,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesPilotos.add(ActualizarPiloto);
 		
 		JMenuItem VerPilotos = new JMenuItem("Ver pilotos");
+		VerPilotos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		VerPilotos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new verPilotosJF().setVisible(true);
@@ -94,9 +84,11 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesPilotos.add(VerPilotos);
 		
 		JMenu OpcionesEscuderias = new JMenu("Opciones de Escuderia");
+		OpcionesEscuderias.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		mnNewMenu.add(OpcionesEscuderias);
 		
 		JMenuItem CrearEscuderia = new JMenuItem("Crear escudería");
+		CrearEscuderia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		CrearEscuderia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new crearEscuderiaJF().setVisible(true);
@@ -106,6 +98,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesEscuderias.add(CrearEscuderia);
 		
 		JMenuItem BorrarEscuderia = new JMenuItem("Borrar escudería");
+		BorrarEscuderia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BorrarEscuderia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new borrarEscuderiaJF().setVisible(true);
@@ -115,6 +108,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesEscuderias.add(BorrarEscuderia);
 		
 		JMenuItem ActualizarEscuderia = new JMenuItem("Actualizar escudería");
+		ActualizarEscuderia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ActualizarEscuderia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new actualizarEscuderiaJF().setVisible(true);
@@ -124,6 +118,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesEscuderias.add(ActualizarEscuderia);
 		
 		JMenuItem VerEscuderias = new JMenuItem("Ver escuderías");
+		VerEscuderias.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		VerEscuderias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new verEscuderiasJF().setVisible(true);
@@ -133,9 +128,11 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesEscuderias.add(VerEscuderias);
 		
 		JMenu OpcionesCircuitos = new JMenu("Opciones de Circuito");
+		OpcionesCircuitos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		mnNewMenu.add(OpcionesCircuitos);
 		
 		JMenuItem CrearCircuito = new JMenuItem("Crear circuito");
+		CrearCircuito.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		CrearCircuito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new crearCircuitoJF().setVisible(true); //crear vista crearCircuitoJF
@@ -145,6 +142,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesCircuitos.add(CrearCircuito);
 		
 		JMenuItem BorrarCircuito = new JMenuItem("Borrar circuito");
+		BorrarCircuito.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		BorrarCircuito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new borrarCircuitoJF().setVisible(true);
@@ -154,6 +152,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesCircuitos.add(BorrarCircuito);
 		
 		JMenuItem ActualizarCircuito = new JMenuItem("Actualizar circuito");
+		ActualizarCircuito.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ActualizarCircuito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new actualizarCircuitoJF().setVisible(true);
@@ -163,6 +162,7 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesCircuitos.add(ActualizarCircuito);
 		
 		JMenuItem VerCircuitos = new JMenuItem("Ver circuitos");
+		VerCircuitos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		VerCircuitos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new verCircuitosJF().setVisible(true); //crear vista verCircuitosJF
@@ -172,9 +172,11 @@ public class pantallaInicioJF extends JFrame {
 		OpcionesCircuitos.add(VerCircuitos);
 		
 		JMenu TemporadaMenu = new JMenu("Temporada");
+		TemporadaMenu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		menuBar.add(TemporadaMenu);
 		
 		JMenuItem ComenzarTemporada = new JMenuItem("Nueva temporada");
+		ComenzarTemporada.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ComenzarTemporada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new temporadaJF().setVisible(true);
@@ -184,6 +186,7 @@ public class pantallaInicioJF extends JFrame {
 		TemporadaMenu.add(ComenzarTemporada);
 		
 		JMenuItem CarreraSimple = new JMenuItem("Carrera simple");
+		CarreraSimple.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		CarreraSimple.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new carreraSimpleJF().setVisible(true);
@@ -200,7 +203,7 @@ public class pantallaInicioJF extends JFrame {
 		JLabel ImagenFondolbl = new JLabel("");
 		ImagenFondolbl.setBounds(0, 0, 654, 383);
 		
-		ImageIcon icon = new ImageIcon(getClass().getResource("images//logoF1.jpg")); //Creamos el objeto imagen dandole la url relativa de la imagen 
+		ImageIcon icon = new ImageIcon(getClass().getResource("Images//logoF1.jpg")); //Creamos el objeto imagen dandole la url relativa de la imagen 
 		ImageIcon img = new ImageIcon(icon.getImage().getScaledInstance(ImagenFondolbl.getWidth(), ImagenFondolbl.getHeight(), Image.SCALE_SMOOTH));
 		
 		ImagenFondolbl.setIcon(img);
